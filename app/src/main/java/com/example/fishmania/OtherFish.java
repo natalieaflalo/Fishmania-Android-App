@@ -1,5 +1,7 @@
 package com.example.fishmania;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class OtherFish extends Fish{
@@ -9,29 +11,31 @@ public class OtherFish extends Fish{
     public OtherFish(FishGroup fishGroupValue, GameLevel level){
         super(1, level);
         fishGroup=fishGroupValue;
-        updateValue(5);
+        updateValue(5,level);
     }
-    private void createRandomFishValues (int playerFishValue) {
+    private int createRandomFishValues (int playerFishValue) {
         Random rand = new Random();
         switch (fishGroup) {
             case HIGH:
-                setFishValue(rand.nextInt(playerFishValue + 6) + playerFishValue + 1);
-                break;
+                return (rand.nextInt(playerFishValue + 6) + playerFishValue + 1);
             case LOW:
-                setFishValue(rand.nextInt(playerFishValue) + 1);
-                break;
+                return (rand.nextInt(playerFishValue) + 1);
         }
+        return 0;
     }
 
-    public void updateValue ( int playerFishValue){
-
+    public void updateValue ( int playerFishValue, GameLevel gameLevel){
+        List<Integer> valuesToSet = new ArrayList<Integer>();
         switch (gameLevel) {
             case EASY:
-                setFishValue(playerFishValue,1);
+                valuesToSet.add(createRandomFishValues(playerFishValue));
+                setFishValue(valuesToSet,1);
                 break;
             case MEDIUM:
             case HARD:
-                setFishValue(playerFishValue, 2);
+                valuesToSet.add(createRandomFishValues(playerFishValue));
+                valuesToSet.add(createRandomFishValues(playerFishValue));
+                setFishValue(valuesToSet, 2);
                 break;
         }
     }

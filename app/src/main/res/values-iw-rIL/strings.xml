@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="new_game">משחק חדש</string>
+    <string name="how_to_play">איך משחקים</string>
+    <string name="login">התחברות</string>
+    <string name="quit">יציאה</string>
+    <string name="scoreboard">לוח תוצאות</string>
+    <string name="choose_difficulty">בחר רמת קושי:</string>
+    <string name="easy_btn">קל</string>
+    <string name="medium_btn">בינוני</string>
+    <string name="hard_btn">קשה</string>
+    <string name="explanation_btn">הסבר</string>
+    <string name="menu_item_volume">עוצמת קול</string>
+    <string name="menu_item_language">שפה</string>
+    <string name="menu_language_english">אנגלית</string>
+    <string name="menu_language_hebrew">עברית</string>
+</resources>

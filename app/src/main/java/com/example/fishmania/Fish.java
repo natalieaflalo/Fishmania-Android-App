@@ -25,7 +25,7 @@ public abstract class Fish {
         return this.fishValue;
     }
 
-    public void setFishValue(int fishValue){
+    public void setFishValue(List<Integer> valuesToSet, int amountOfValues){
 
     }
 

@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">FishMania</string>
+    <string name="app_name" translatable="false">FishMania</string>
+    <string name="fishmania" translatable="false">Fish Mania!</string>
+    <string name="new_game">New Game</string>
+    <string name="how_to_play">How To Play</string>
+    <string name="login">Login</string>
+    <string name="quit">Quit</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="choose_difficulty">Choose Difficulty:</string>
+    <string name="easy_btn">Easy</string>
+    <string name="medium_btn">Medium</string>
+    <string name="hard_btn">Hard</string>
+    <string name="explanation_btn">Explanation</string>
+    <string name="menu_item_volume">Volume</string>
+    <string name="menu_item_language">Language</string>
+    <string name="menu_language_english">English</string>
+    <string name="menu_language_hebrew">Hebrew</string>
+
 </resources>
