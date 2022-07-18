@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name" translatable="false">FishMania</string>
     <string name="fishmania" translatable="false">Fish Mania!</string>
-    <string name="new_game">New Game</string>
-    <string name="how_to_play">How To Play</string>
-    <string name="login">Login</string>
-    <string name="quit">Quit</string>
-    <string name="scoreboard">Scoreboard</string>
+    <string name="new_game_btn">New Game</string>
+    <string name="how_to_play_btn">How To Play</string>
+    <string name="login_btn">Login</string>
+    <string name="login_txt">Login:</string>
+    <string name="exit_btn">Exit</string>
+    <string name="scoreboard_btn">Scoreboard</string>
     <string name="choose_difficulty">Choose Difficulty:</string>
     <string name="easy_btn">Easy</string>
     <string name="medium_btn">Medium</string>
@@ -15,5 +16,19 @@
     <string name="menu_item_language">Language</string>
     <string name="menu_language_english">English</string>
     <string name="menu_language_hebrew">Hebrew</string>
+    <string name="username_txt">Username:</string>
+    <string name="username_box">Username</string>
+    <string name="password_txt">Password:</string>
+    <string name="password_box">Password</string>
+    <string name="dont_have_an_account">Don\'t Have an Account ?</string>
+    <string name="sign_in_btn">Sign in</string>
+    <string name="email_txt">Email:</string>
+    <string name="email_box">Email</string>
+    <string name="age_txt">Age:</string>
+    <string name="age_box">Age</string>
+    <string name="verify_password_txt">Verify Password:</string>
+    <string name="verify_password_box">Verify Password</string>
+    <string name="get_started_btn">get started !</string>
+
 
 </resources>

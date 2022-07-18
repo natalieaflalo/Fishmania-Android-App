@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FishMainia/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.24" />
         <entry key="..\:/FishMainia/app/src/main/res/layout/activity_choose_level.xml" value="0.29583333333333334" />
-        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_login.xml" value="0.23324275362318841" />
-        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_game.xml" value="0.36666666666666664" />
+        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/FishMainia/app/src/main/res/layout/activity_scoreboard.xml" value="0.23324275362318841" />
-        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_sign_in.xml" value="0.23324275362318841" />
-        <entry key="..\:/FishMainia/app/src/main/res/menu/options.xml" value="0.2947916666666667" />
+        <entry key="..\:/FishMainia/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
+        <entry key="..\:/FishMainia/app/src/main/res/layout/adapter_view_layout.xml" value="0.33" />
+        <entry key="..\:/FishMainia/app/src/main/res/menu/options.xml" value="0.1" />
       </map>
     </option>
   </component>

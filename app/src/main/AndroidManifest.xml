@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FishMania">
         <activity
+            android:name=".GameActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
@@ -25,6 +28,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="locale|orientation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

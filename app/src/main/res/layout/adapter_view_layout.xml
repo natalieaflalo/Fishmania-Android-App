@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+
+    <TextView
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Date"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:id="@+id/adapter_date"
+        android:layout_weight="66.6"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="33.3">
+
+        <TextView
+            android:gravity="center"
+            android:text="Number of Fish"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/adapter_num_of_fish"/>
+
+        <TextView
+            android:gravity="center"
+            android:text="Final Score"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/adapter_final_value"
+            android:layout_below="@+id/adapter_num_of_fish"/>
+
+        <TextView
+            android:gravity="center"
+            android:text="Game Level"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/adapter_game_level"
+            android:layout_below="@+id/adapter_num_of_fish"/>
+    </LinearLayout>
+
+</LinearLayout>

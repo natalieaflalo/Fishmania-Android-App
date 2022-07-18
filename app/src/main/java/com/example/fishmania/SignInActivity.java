@@ -36,7 +36,6 @@ public class SignInActivity extends AppCompatActivity {
     private void initEditTextList() {
         inputEditText.clear();
         inputEditText.add(findViewById(R.id.editTextName));
-        inputEditText.add(findViewById(R.id.editTextGender));
         inputEditText.add(findViewById(R.id.editTextEmail));
         inputEditText.add(findViewById(R.id.editTextAge));
         initStringList();
@@ -68,7 +67,7 @@ public class SignInActivity extends AppCompatActivity {
         for (String input: signInUserInfo) {
             if(input.matches("")){
                 isDataValid = false;
-                Toast toast = Toast.makeText(this, "One Or More Fields Are Missing", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, "One or more fields are missing", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.TOP,0,0);
                 toast.show();
                 break;
