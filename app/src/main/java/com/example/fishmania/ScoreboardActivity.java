@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ScoreboardActivity extends AppCompatActivity {
+public class ScoreboardActivity extends OptionMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

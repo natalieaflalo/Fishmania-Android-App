@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends OptionMenuActivity {
     private List<EditText> inputEditText = new ArrayList<EditText>();
     private List<String> signInUserInfo = new ArrayList<String>();
     private boolean isInputIsValid;

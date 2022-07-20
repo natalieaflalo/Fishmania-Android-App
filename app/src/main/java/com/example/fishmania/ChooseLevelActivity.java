@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class ChooseLevelActivity extends AppCompatActivity {
+public class ChooseLevelActivity extends OptionMenuActivity {
 
 
     @Override
