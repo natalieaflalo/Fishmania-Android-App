@@ -4,12 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScoreboardActivity">
+    tools:context=".ScoreboardActivity"
+    android:background="@drawable/main_background">
+
+    <ImageView
+        android:id="@+id/scoreboard_title"
+        android:layout_width="409dp"
+        android:layout_height="109dp"
+        android:src="@drawable/scoreboard_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ListView
         android:id="@+id/scoreboard_list"
         android:layout_width="227dp"
         android:layout_height="433dp"
+        android:background="@drawable/blue_gradient_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

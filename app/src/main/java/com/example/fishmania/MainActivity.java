@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(intent);
                 break;
-            case R.id.volume:
-                Toast.makeText(this,"volume",Toast.LENGTH_LONG).show();
+            case R.id.music:
+                Toast.makeText(this,"play or stop",Toast.LENGTH_LONG).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

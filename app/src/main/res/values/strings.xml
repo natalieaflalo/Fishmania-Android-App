@@ -4,15 +4,13 @@
     <string name="new_game_btn">New Game</string>
     <string name="how_to_play_btn">How To Play</string>
     <string name="login_btn">Login</string>
-    <string name="login_txt">Login:</string>
     <string name="exit_btn">Exit</string>
     <string name="scoreboard_btn">Scoreboard</string>
-    <string name="choose_difficulty">Choose Difficulty:</string>
     <string name="easy_btn">Easy</string>
     <string name="medium_btn">Medium</string>
     <string name="hard_btn">Hard</string>
     <string name="explanation_btn">Explanation</string>
-    <string name="menu_item_volume">Volume</string>
+    <string name="menu_item_music">Play/Pause Music</string>
     <string name="menu_item_language">Language</string>
     <string name="menu_language_english">English</string>
     <string name="menu_language_hebrew">Hebrew</string>

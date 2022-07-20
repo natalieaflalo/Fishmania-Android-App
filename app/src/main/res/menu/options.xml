@@ -13,7 +13,7 @@
                 app:showAsAction="never"/>
         </menu>
     </item>
-    <item android:id="@+id/volume"
-        android:title="@string/menu_item_volume"
+    <item android:id="@+id/music"
+        android:title="@string/menu_item_music"
         app:showAsAction="never" />
 </menu>

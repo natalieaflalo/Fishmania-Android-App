@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseLevelActivity">
+    tools:context=".ChooseLevelActivity"
+    android:background="@drawable/main_background">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="183dp"
-        android:layout_height="46dp"
-        android:text="@string/choose_difficulty"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    <ImageView
+        android:id="@+id/sign_in_title"
+        android:layout_width="409dp"
+        android:layout_height="109dp"
+        android:src="@drawable/choose_difficulty_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <Button
         android:id="@+id/buttonEasy"
@@ -25,22 +25,10 @@
         android:text="@string/easy_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.117" />
-
-    <Button
-        android:id="@+id/buttonMedium"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:text="@string/medium_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.439" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <Button
         android:id="@+id/buttonHard"
@@ -49,10 +37,22 @@
         android:text="@string/hard_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557" />
+        app:layout_constraintVertical_bias="0.625" />
+
+    <Button
+        android:id="@+id/buttonMedium"
+        android:layout_width="94dp"
+        android:layout_height="48dp"
+        android:text="@string/medium_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.506" />
 
     <Button
         android:id="@+id/buttonLevelsExplain"
