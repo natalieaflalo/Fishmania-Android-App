@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,11 +21,15 @@ import android.util.DisplayMetrics;
 
 
 public class MainActivity extends AppCompatActivity {
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
         Button btn1 = (Button) findViewById(R.id.buttonExit);
         btn1.setOnClickListener(new View.OnClickListener() {
 
@@ -34,6 +39,25 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
+        mediaPlayer.release();
     }
 
     @Override
@@ -67,7 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.music:
-                Toast.makeText(this,"play or stop",Toast.LENGTH_LONG).show();
+                if(mediaPlayer.isPlaying()){
+                    onPause();
+                }
+                else {
+                    onResume();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
