@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/scoreboard_title"
-        android:layout_width="409dp"
+        android:layout_width="wrap_content"
         android:layout_height="109dp"
         android:src="@drawable/scoreboard_title"
         app:layout_constraintBottom_toBottomOf="parent"

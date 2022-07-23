@@ -10,22 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FishMania">
         <activity
+            android:name=".GameOptionsActivity"
+            android:exported="false"
+            android:label="Game Option"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".GameActivity"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".LoginActivity"/>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".ScoreboardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChooseLevelActivity"
             android:exported="false"
-            android:label="Choose Level"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:configChanges="locale|orientation"

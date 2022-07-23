@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/fishmania_title"
-        android:layout_width="409dp"
+        android:layout_width="wrap_content"
         android:layout_height="109dp"
         android:src="@drawable/fish_mania_title"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,10 +22,10 @@
 
     <Button
         android:id="@+id/buttonNewGame"
-        android:layout_width="123dp"
+        android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginTop="104dp"
-        android:onClick="openChooseLevelActivity"
+        android:onClick="openGameOptionActivity"
         android:text="@string/new_game_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/buttonHowToPlay"
-        android:layout_width="172dp"
+        android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginTop="104dp"
         android:text="@string/how_to_play_btn"
@@ -48,7 +48,7 @@
 
     <Button
         android:id="@+id/buttonScoreboard"
-        android:layout_width="152dp"
+        android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginTop="104dp"
         android:text="@string/scoreboard_btn"

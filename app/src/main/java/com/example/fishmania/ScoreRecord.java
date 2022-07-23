@@ -8,8 +8,8 @@ public class ScoreRecord {
     private int final_score;
     private String game_level;
 
-    public ScoreRecord(int num_of_fish, int final_score, String game_level) {
-        this.date = LocalDateTime.now();;
+    public ScoreRecord(LocalDateTime date_time, int num_of_fish, int final_score, String game_level) {
+        this.date = date_time;
         this.num_of_fish = num_of_fish;
         this.final_score = final_score;
         this.game_level = game_level;
@@ -39,9 +39,7 @@ public class ScoreRecord {
         this.final_score = final_score;
     }
 
-    public String getGame_level() {
-        return game_level;
-    }
+    public String getGame_level() {return game_level;}
 
     public void setGame_level(String game_level) {
         this.game_level = game_level;

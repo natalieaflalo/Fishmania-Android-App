@@ -9,24 +9,27 @@
     <string name="easy_btn">Easy</string>
     <string name="medium_btn">Medium</string>
     <string name="hard_btn">Hard</string>
-    <string name="explanation_btn">Explanation</string>
     <string name="menu_item_music">Play/Pause Music</string>
     <string name="menu_item_language">Language</string>
     <string name="menu_language_english">English</string>
     <string name="menu_language_hebrew">Hebrew</string>
     <string name="username_txt">Username:</string>
-    <string name="username_box">Username</string>
+    <string name="username_box">Enter Username</string>
     <string name="password_txt">Password:</string>
-    <string name="password_box">Password</string>
+    <string name="password_box">Enter Password</string>
     <string name="dont_have_an_account">Don\'t Have an Account ?</string>
     <string name="sign_in_btn">Sign in</string>
     <string name="email_txt">Email:</string>
-    <string name="email_box">Email</string>
+    <string name="email_box">Enter Email</string>
     <string name="age_txt">Age:</string>
-    <string name="age_box">Age</string>
+    <string name="age_box">Enter Age</string>
     <string name="verify_password_txt">Verify Password:</string>
     <string name="verify_password_box">Verify Password</string>
     <string name="get_started_btn">get started !</string>
+    <string name="choose_background">Choose Game Background :</string>
+    <string name="lets_play_btn">Let\'s Play !</string>
+    <string name="choose_fish_color">Choose Fish Color :</string>
+    <string name="choose_difficulty">Choose Difficulty :</string>
 
 
 </resources>

@@ -3,14 +3,13 @@
     <string name="easy_btn">קל</string>
     <string name="medium_btn">בינוני</string>
     <string name="hard_btn">קשה</string>
-    <string name="explanation_btn">הסבר</string>
     <string name="menu_item_language">שפה</string>
     <string name="menu_language_english">אנגלית</string>
     <string name="menu_language_hebrew">עברית</string>
     <string name="username_txt">שם משתמש:</string>
-    <string name="username_box">שם משתמש</string>
+    <string name="username_box">הכנס שם משתמש</string>
     <string name="password_txt">סיסמה:</string>
-    <string name="password_box">סיסמה</string>
+    <string name="password_box">הכנס סיסמה</string>
     <string name="dont_have_an_account">אין לך חשבון?</string>
     <string name="sign_in_btn">הרשמה</string>
     <string name="login_btn">התחברות</string>
@@ -19,11 +18,15 @@
     <string name="new_game_btn">משחק חדש</string>
     <string name="exit_btn">יציאה</string>
     <string name="email_txt">אימייל:</string>
-    <string name="email_box">אימייל</string>
+    <string name="email_box">הכנס אימייל</string>
     <string name="age_txt">גיל:</string>
-    <string name="age_box">גיל</string>
+    <string name="age_box">הכנס גיל</string>
     <string name="verify_password_txt">אימות סיסמה:</string>
     <string name="verify_password_box">אימות סיסמה</string>
     <string name="get_started_btn">התחילו !</string>
     <string name="menu_item_music">נגן/עצור מוזיקה</string>
+    <string name="choose_background">בחר רקע למשחק :</string>
+    <string name="lets_play_btn">בואו נשחק !</string>
+    <string name="choose_fish_color">בחר את צבע הדג :</string>
+    <string name="choose_difficulty">בחר רמת קושי :</string>
 </resources>

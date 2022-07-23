@@ -37,8 +37,8 @@ public class MainActivity extends OptionMenuActivity {
         });
     }
 
-    public void openChooseLevelActivity(View view) {
-        Intent intent = new Intent(this,ChooseLevelActivity.class);
+    public void openGameOptionActivity(View view) {
+        Intent intent = new Intent(this,GameOptionsActivity.class);
         startActivity(intent);
     }
 

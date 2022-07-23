@@ -35,7 +35,7 @@ public class SignInActivity extends OptionMenuActivity {
 
     private void initEditTextList() {
         inputEditText.clear();
-        inputEditText.add(findViewById(R.id.editTextName));
+        inputEditText.add(findViewById(R.id.editTextUserName));
         inputEditText.add(findViewById(R.id.editTextEmail));
         inputEditText.add(findViewById(R.id.editTextAge));
         initStringList();
