@@ -41,7 +41,8 @@ public class GameOptionsActivity extends OptionMenuActivity implements View.OnCl
         defaultEditor.putInt("finalScore",0);
         defaultEditor.commit();
 
-        easyBtn.setBackgroundResource(R.color.pressed_green);
+        mediumBtn.getBackground().setAlpha(90);
+        hardBtn.getBackground().setAlpha(90);
         underwaterBG.setBackgroundResource(R.color.pressed_green);
         greenFish.setBackgroundResource(R.color.pressed_green);
 
@@ -67,21 +68,22 @@ public class GameOptionsActivity extends OptionMenuActivity implements View.OnCl
         switch (view.getId()){
             case R.id.buttonEasy:
                 editor.putString("difficulty","easy");
-                easyBtn.setBackgroundResource(R.color.pressed_green);
-                mediumBtn.setBackgroundResource(R.color.dodgerblue);
-                hardBtn.setBackgroundResource(R.color.dodgerblue);
+
+                easyBtn.setBackgroundResource(R.color.dodgerblue);
+                mediumBtn.getBackground().setAlpha(90);
+                hardBtn.getBackground().setAlpha(90);
                 break;
             case R.id.buttonMedium:
                 editor.putString("difficulty","medium");
-                easyBtn.setBackgroundResource(R.color.dodgerblue);
-                mediumBtn.setBackgroundResource(R.color.pressed_green);
-                hardBtn.setBackgroundResource(R.color.dodgerblue);
+                easyBtn.getBackground().setAlpha(90);
+                mediumBtn.setBackgroundResource(R.color.dodgerblue);
+                hardBtn.getBackground().setAlpha(90);
                 break;
             case R.id.buttonHard:
                 editor.putString("difficulty","hard");
-                easyBtn.setBackgroundResource(R.color.dodgerblue);
-                mediumBtn.setBackgroundResource(R.color.dodgerblue);
-                hardBtn.setBackgroundResource(R.color.pressed_green);
+                easyBtn.getBackground().setAlpha(90);
+                mediumBtn.getBackground().setAlpha(90);
+                hardBtn.setBackgroundResource(R.color.dodgerblue);
                 break;
             case R.id.oceanOptionImageButton:
                 editor.putString("background","ocean");

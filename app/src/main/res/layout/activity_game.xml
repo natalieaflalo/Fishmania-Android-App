@@ -7,18 +7,36 @@
     android:id="@+id/game_activity_id"
     tools:context=".GameActivity">
 
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true" >
-
         <ImageView
             android:id="@+id/playerFish"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:scaleType="fitCenter" />
-    </FrameLayout>
+
+        <ImageView
+            android:id="@+id/firstOtherFish"
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:src="@drawable/other_blue_fish" />
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:src="@drawable/other_blue_fish"
+            android:id="@+id/secondOtherFish"/>
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:src="@drawable/other_blue_fish"
+            android:id="@+id/thirdOtherFish"/>
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:src="@drawable/other_blue_fish"
+            android:id="@+id/forthOtherFish"/>
+
 
 
 </RelativeLayout>
