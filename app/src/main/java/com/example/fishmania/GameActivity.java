@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.Timer;
 
@@ -28,6 +29,8 @@ public class GameActivity extends AppCompatActivity {
     LocalDateTime dateTime;
     //ImageViews
     private ImageView playerFish, firstOtherFish, secondOtherFish, thirdOtherFish, fourthOtherFish, fifthOtherFish;
+    //TextView for Fish Values
+    private TextView playerFishValue, firstOtherFishValue, secondOtherFishValue, thirdOtherFishValue, fourthOtherFishValue, fifthOtherFishValue;
     //Positions of Fish
     private float xPlayerFish, yPlayerFish;
     private float xFirstOtherFish, yFirstOtherFish;
@@ -80,6 +83,7 @@ public class GameActivity extends AppCompatActivity {
             playerFish.setImageResource(R.drawable.green_eating_fish);
         }
         //Player Fish Movement by Touch
+        playerFishValue = (TextView) findViewById(R.id.playerFishValue);
         relativeLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -90,18 +94,26 @@ public class GameActivity extends AppCompatActivity {
                 if(motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
                     playerFish.setX(xPlayerFish);
                     playerFish.setY(yPlayerFish);
+                    playerFishValue.setX(xPlayerFish + 450);
+                    playerFishValue.setY(yPlayerFish + (playerFishValue.getHeight() - playerFishValue.getHeight() / 2));
                 }
                 return true;
             }
         });
-
+        //ImageView of otherFish find
         firstOtherFish = (ImageView) findViewById(R.id.firstOtherFish);
         secondOtherFish = (ImageView) findViewById(R.id.secondOtherFish);
         thirdOtherFish = (ImageView) findViewById(R.id.thirdOtherFish);
         fourthOtherFish = (ImageView) findViewById(R.id.fourthOtherFish);
         fifthOtherFish = (ImageView) findViewById(R.id.fifthOtherFish);
+        //TextView of otherFish values find
+        firstOtherFishValue = (TextView) findViewById(R.id.firstOtherFishValue);
+        secondOtherFishValue = (TextView) findViewById(R.id.secondOtherFishValue);
+        thirdOtherFishValue = (TextView) findViewById(R.id.thirdOtherFishValue);
+        fourthOtherFishValue = (TextView) findViewById(R.id.fourthOtherFishValue);
+        fifthOtherFishValue = (TextView) findViewById(R.id.fifthOtherFishValue);
 
-        //Move to Out of Screen
+        //Locate images outside of screen first
         firstOtherFish.setX(-80.0f);
         firstOtherFish.setY(-80.0f);
         secondOtherFish.setX(-80.0f);
@@ -112,6 +124,18 @@ public class GameActivity extends AppCompatActivity {
         fourthOtherFish.setY(-80.0f);
         fifthOtherFish.setX(-80.0f);
         fifthOtherFish.setY(-80.0f);
+
+        //Locate values outside of screen first
+        firstOtherFishValue.setX(-80.0f);
+        firstOtherFishValue.setY(-80.0f);
+        secondOtherFishValue.setX(-80.0f);
+        secondOtherFishValue.setY(-80.0f);
+        thirdOtherFishValue.setX(-80.0f);
+        thirdOtherFishValue.setY(-80.0f);
+        fourthOtherFishValue.setX(-80.0f);
+        fourthOtherFishValue.setY(-80.0f);
+        fifthOtherFishValue.setX(-80.0f);
+        fifthOtherFishValue.setY(-80.0f);
 
         timer.schedule(new TimerTask() {
             @Override
@@ -139,6 +163,8 @@ public class GameActivity extends AppCompatActivity {
                     }
                     firstOtherFish.setX(xFirstOtherFish);
                     firstOtherFish.setY(yFirstOtherFish);
+                    firstOtherFishValue.setX(xFirstOtherFish);
+                    firstOtherFishValue.setY(yFirstOtherFish);
                 break;
             case 2:
                     xSecondOtherFish -= 5;
@@ -148,6 +174,8 @@ public class GameActivity extends AppCompatActivity {
                     }
                     secondOtherFish.setX(xSecondOtherFish);
                     secondOtherFish.setY(ySecondOtherFish);
+                    secondOtherFishValue.setX(xSecondOtherFish);
+                    secondOtherFishValue.setY(ySecondOtherFish);
                 break;
             case 3:
                     xThirdOtherFish -= 6;
@@ -157,6 +185,8 @@ public class GameActivity extends AppCompatActivity {
                     }
                     thirdOtherFish.setX(xThirdOtherFish);
                     thirdOtherFish.setY(yThirdOtherFish);
+                    thirdOtherFishValue.setX(xThirdOtherFish);
+                    thirdOtherFishValue.setY(yThirdOtherFish);
                 break;
             case 4:
                     xFourthOtherFish -= 7;
@@ -166,6 +196,8 @@ public class GameActivity extends AppCompatActivity {
                     }
                     fourthOtherFish.setX(xFourthOtherFish);
                     fourthOtherFish.setY(yFourthOtherFish);
+                    fourthOtherFishValue.setX(xFourthOtherFish);
+                    fourthOtherFishValue.setY(yFourthOtherFish);
                 break;
             case 5:
                     xFifthOtherFish -= 8;
@@ -175,6 +207,8 @@ public class GameActivity extends AppCompatActivity {
                     }
                     fifthOtherFish.setX(xFifthOtherFish);
                     fifthOtherFish.setY(yFifthOtherFish);
+                    fifthOtherFishValue.setX(xFifthOtherFish);
+                    fifthOtherFishValue.setY(yFifthOtherFish);
                 break;
         }
     }

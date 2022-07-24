@@ -16,10 +16,14 @@
 
         <TextView
             android:id="@+id/playerFishValue"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/value_bubble"
+            android:padding="5dp"
+            android:text="0"
+            android:textStyle="bold"
+            android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/firstOtherFish"
@@ -29,8 +33,12 @@
 
         <TextView
             android:id="@+id/firstOtherFishValue"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@drawable/value_bubble"
+            android:textStyle="bold"
+            android:text="1"/>
 
         <ImageView
             android:layout_width="80dp"
@@ -40,8 +48,12 @@
 
         <TextView
             android:id="@+id/secondOtherFishValue"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@drawable/value_bubble"
+            android:textStyle="bold"
+            android:text="2"/>
 
         <ImageView
             android:layout_width="80dp"
@@ -51,19 +63,27 @@
 
         <TextView
             android:id="@+id/thirdOtherFishValue"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@drawable/value_bubble"
+            android:textStyle="bold"
+            android:text="3"/>
 
         <ImageView
             android:id="@+id/fourthOtherFish"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/other_blue_fish" />
+            android:src="@drawable/other_blue_fish"/>
 
         <TextView
             android:id="@+id/fourthOtherFishValue"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@drawable/value_bubble"
+            android:textStyle="bold"
+            android:text="4"/>
 
         <ImageView
             android:id="@+id/fifthOtherFish"
@@ -73,8 +93,12 @@
 
         <TextView
             android:id="@+id/fifthOtherFishValue"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:background="@drawable/value_bubble"
+            android:textStyle="bold"
+            android:text="5"/>
 
 
 </RelativeLayout>
