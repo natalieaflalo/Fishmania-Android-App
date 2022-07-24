@@ -11,32 +11,70 @@
             android:id="@+id/playerFish"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
-            android:scaleType="fitCenter" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/playerFishValue"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
 
         <ImageView
             android:id="@+id/firstOtherFish"
-            android:layout_width="75dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/other_blue_fish" />
 
+        <TextView
+            android:id="@+id/firstOtherFishValue"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp" />
+
         <ImageView
-            android:layout_width="75dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/other_blue_fish"
             android:id="@+id/secondOtherFish"/>
 
+        <TextView
+            android:id="@+id/secondOtherFishValue"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp" />
+
         <ImageView
-            android:layout_width="75dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/other_blue_fish"
             android:id="@+id/thirdOtherFish"/>
 
-        <ImageView
-            android:layout_width="75dp"
-            android:layout_height="70dp"
-            android:src="@drawable/other_blue_fish"
-            android:id="@+id/forthOtherFish"/>
+        <TextView
+            android:id="@+id/thirdOtherFishValue"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp" />
 
+        <ImageView
+            android:id="@+id/fourthOtherFish"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/other_blue_fish" />
+
+        <TextView
+            android:id="@+id/fourthOtherFishValue"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp" />
+
+        <ImageView
+            android:id="@+id/fifthOtherFish"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/other_blue_fish" />
+
+        <TextView
+            android:id="@+id/fifthOtherFishValue"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp" />
 
 
 </RelativeLayout>

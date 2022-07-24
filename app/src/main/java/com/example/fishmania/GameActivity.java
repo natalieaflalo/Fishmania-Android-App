@@ -11,9 +11,9 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
 import java.util.Timer;
 
 import java.time.LocalDateTime;
@@ -27,13 +27,14 @@ public class GameActivity extends AppCompatActivity {
     int numOfFishEaten, finalScore;
     LocalDateTime dateTime;
     //ImageViews
-    private ImageView playerFish, firstOtherFish, secondOtherFish, thirdOtherFish, forthOtherFish;
+    private ImageView playerFish, firstOtherFish, secondOtherFish, thirdOtherFish, fourthOtherFish, fifthOtherFish;
     //Positions of Fish
     private float xPlayerFish, yPlayerFish;
     private float xFirstOtherFish, yFirstOtherFish;
     private float xSecondOtherFish, ySecondOtherFish;
     private float xThirdOtherFish, yThirdOtherFish;
-    private float xForthOtherFish, yForthOtherFish;
+    private float xFourthOtherFish, yFourthOtherFish;
+    private float xFifthOtherFish, yFifthOtherFish;
 
     private Handler handler = new Handler();
     private Timer timer = new Timer();
@@ -78,6 +79,7 @@ public class GameActivity extends AppCompatActivity {
         else{
             playerFish.setImageResource(R.drawable.green_eating_fish);
         }
+        //Player Fish Movement by Touch
         relativeLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -96,7 +98,8 @@ public class GameActivity extends AppCompatActivity {
         firstOtherFish = (ImageView) findViewById(R.id.firstOtherFish);
         secondOtherFish = (ImageView) findViewById(R.id.secondOtherFish);
         thirdOtherFish = (ImageView) findViewById(R.id.thirdOtherFish);
-        forthOtherFish = (ImageView) findViewById(R.id.forthOtherFish);
+        fourthOtherFish = (ImageView) findViewById(R.id.fourthOtherFish);
+        fifthOtherFish = (ImageView) findViewById(R.id.fifthOtherFish);
 
         //Move to Out of Screen
         firstOtherFish.setX(-80.0f);
@@ -105,8 +108,10 @@ public class GameActivity extends AppCompatActivity {
         secondOtherFish.setY(-80.0f);
         thirdOtherFish.setX(-80.0f);
         thirdOtherFish.setY(-80.0f);
-        forthOtherFish.setX(-80.0f);
-        forthOtherFish.setY(-80.0f);
+        fourthOtherFish.setX(-80.0f);
+        fourthOtherFish.setY(-80.0f);
+        fifthOtherFish.setX(-80.0f);
+        fifthOtherFish.setY(-80.0f);
 
         timer.schedule(new TimerTask() {
             @Override
@@ -114,59 +119,63 @@ public class GameActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        changePos(1);
-                        changePos(2);
-                        changePos(3);
-                        changePos(4);
+                        for (int i = 0; i < 6; i++) {
+                            otherFishChangePosition(i);
+                        }
                     }
                 });
             }
-        },0 ,20);
+        },0 ,10);
     }
 
-    public void changePos(int otherFishNumber){
+    public void otherFishChangePosition(int otherFishNumber){
         //Right to Left
         switch (otherFishNumber){
             case 1:
-                xFirstOtherFish -= 10;
-                if (firstOtherFish.getX() + firstOtherFish.getWidth() < 0) {
-                    xFirstOtherFish = width + 100.0f;
-                    yFirstOtherFish = (float)Math.floor(Math.random() * (height - firstOtherFish.getHeight()));
-                }
-                firstOtherFish.setX(xFirstOtherFish);
-                firstOtherFish.setY(yFirstOtherFish);
+                    xFirstOtherFish -= 9;
+                    if (firstOtherFish.getX() + firstOtherFish.getWidth() < 0) {
+                        xFirstOtherFish = width + 100.0f;
+                        yFirstOtherFish = (float)Math.floor(Math.random() * (height - firstOtherFish.getHeight()));
+                    }
+                    firstOtherFish.setX(xFirstOtherFish);
+                    firstOtherFish.setY(yFirstOtherFish);
+                break;
             case 2:
-                xSecondOtherFish -= 10;
-                if (secondOtherFish.getX() + secondOtherFish.getWidth() < 0) {
-                    xSecondOtherFish = width + 100.0f;
-                    ySecondOtherFish = (float)Math.floor(Math.random() * (height - secondOtherFish.getHeight()));
-                }
-                secondOtherFish.setX(xSecondOtherFish);
-                secondOtherFish.setY(ySecondOtherFish);
+                    xSecondOtherFish -= 5;
+                    if (secondOtherFish.getX() + secondOtherFish.getWidth() < 0) {
+                        xSecondOtherFish = width + 100.0f;
+                        ySecondOtherFish = (float)Math.floor(Math.random() * (height - secondOtherFish.getHeight()));
+                    }
+                    secondOtherFish.setX(xSecondOtherFish);
+                    secondOtherFish.setY(ySecondOtherFish);
+                break;
             case 3:
-                xThirdOtherFish -= 10;
-                if (thirdOtherFish.getX() + thirdOtherFish.getWidth() < 0) {
-                    xThirdOtherFish = width + 100.0f;
-                    yThirdOtherFish = (float)Math.floor(Math.random() * (height - thirdOtherFish.getHeight()));
-                }
-                thirdOtherFish.setX(xThirdOtherFish);
-                thirdOtherFish.setY(yThirdOtherFish);
-//            case 4:
-//                xForthOtherFish -= 10;
-//                if (forthOtherFish.getX() + forthOtherFish.getWidth() < 0) {
-//                    xForthOtherFish = width + 100.0f;
-//                    yForthOtherFish = (float)Math.floor(Math.random() * (height - forthOtherFish.getHeight()));
-//                }
-//                forthOtherFish.setX(xForthOtherFish);
-//                forthOtherFish.setY(yForthOtherFish);
-//            case 5:
-//                xFifthOtherFish -= 10;
-//                if (fifthOtherFish.getX() + fifthOtherFish.getWidth() < 0) {
-//                    xFifthOtherFish = width + 100.0f;
-//                    yFifthOtherFish = (float)Math.floor(Math.random() * (height - fifthOtherFish.getHeight()));
-//                }
-//                fifthOtherFish.setX(xFifthOtherFish);
-//                fifthOtherFish.setY(yFifthOtherFish);
+                    xThirdOtherFish -= 6;
+                    if (thirdOtherFish.getX() + thirdOtherFish.getWidth() < 0) {
+                        xThirdOtherFish = width + 100.0f;
+                        yThirdOtherFish = (float)Math.floor(Math.random() * (height - thirdOtherFish.getHeight()));
+                    }
+                    thirdOtherFish.setX(xThirdOtherFish);
+                    thirdOtherFish.setY(yThirdOtherFish);
+                break;
+            case 4:
+                    xFourthOtherFish -= 7;
+                    if (fourthOtherFish.getX() + fourthOtherFish.getWidth() < 0) {
+                        xFourthOtherFish = width + 100.0f;
+                        yFourthOtherFish = (float)Math.floor(Math.random() * (height - fourthOtherFish.getHeight()));
+                    }
+                    fourthOtherFish.setX(xFourthOtherFish);
+                    fourthOtherFish.setY(yFourthOtherFish);
+                break;
+            case 5:
+                    xFifthOtherFish -= 8;
+                    if (fifthOtherFish.getX() + fifthOtherFish.getWidth() < 0) {
+                        xFifthOtherFish = width + 100.0f;
+                        yFifthOtherFish = (float)Math.floor(Math.random() * (height - fifthOtherFish.getHeight()));
+                    }
+                    fifthOtherFish.setX(xFifthOtherFish);
+                    fifthOtherFish.setY(yFifthOtherFish);
+                break;
         }
     }
 
