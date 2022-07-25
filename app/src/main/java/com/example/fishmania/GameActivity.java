@@ -3,6 +3,7 @@ package com.example.fishmania;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -14,23 +15,26 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 
 import java.time.LocalDateTime;
 import java.util.TimerTask;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements View.OnTouchListener {
 
-    RelativeLayout relativeLayout;
-    int height, width;
+    //PlayerFish playerFishInstance = new PlayerFish();
+
+    public RelativeLayout relativeLayout;
+    public int height, width;
     //Scoreboard records
-    int numOfFishEaten, finalScore;
+    public int numOfFishEaten, finalScore;
     LocalDateTime dateTime;
     //ImageViews
     private ImageView playerFish, firstOtherFish, secondOtherFish, thirdOtherFish, fourthOtherFish, fifthOtherFish;
     //TextView for Fish Values
-    private TextView playerFishValue, firstOtherFishValue, secondOtherFishValue, thirdOtherFishValue, fourthOtherFishValue, fifthOtherFishValue;
+    public TextView playerFishValue, firstOtherFishValue, secondOtherFishValue, thirdOtherFishValue, fourthOtherFishValue, fifthOtherFishValue;
     //Positions of Fish
     private float xPlayerFish, yPlayerFish;
     private float xFirstOtherFish, yFirstOtherFish;
@@ -76,30 +80,14 @@ public class GameActivity extends AppCompatActivity {
         //Dynamic PlayerFish image from shared preferences
         String chosenFishColor = gameOptionsSP.getString("fishColor","");
         playerFish = (ImageView) findViewById(R.id.playerFish);
+        playerFishValue = (TextView) findViewById(R.id.playerFishValue);
         if(chosenFishColor=="pink"){
             playerFish.setImageResource(R.drawable.pink_eating_fish);
         }
         else{
             playerFish.setImageResource(R.drawable.green_eating_fish);
         }
-        //Player Fish Movement by Touch
-        playerFishValue = (TextView) findViewById(R.id.playerFishValue);
-        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                //Get touch location on screen and set player fish image to that location
-                xPlayerFish=motionEvent.getRawX() - playerFish.getWidth() / 2;
-                yPlayerFish=motionEvent.getRawY()- playerFish.getHeight() / 2;
 
-                if(motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                    playerFish.setX(xPlayerFish);
-                    playerFish.setY(yPlayerFish);
-                    playerFishValue.setX(xPlayerFish + 450);
-                    playerFishValue.setY(yPlayerFish + (playerFishValue.getHeight() - playerFishValue.getHeight() / 2));
-                }
-                return true;
-            }
-        });
         //ImageView of otherFish find
         firstOtherFish = (ImageView) findViewById(R.id.firstOtherFish);
         secondOtherFish = (ImageView) findViewById(R.id.secondOtherFish);
@@ -112,6 +100,21 @@ public class GameActivity extends AppCompatActivity {
         thirdOtherFishValue = (TextView) findViewById(R.id.thirdOtherFishValue);
         fourthOtherFishValue = (TextView) findViewById(R.id.fourthOtherFishValue);
         fifthOtherFishValue = (TextView) findViewById(R.id.fifthOtherFishValue);
+
+        relativeLayout.setId(0);
+        firstOtherFish.setId((Integer) 1);
+        secondOtherFish.setId((Integer)2);
+        thirdOtherFish.setId((Integer)3);
+        fourthOtherFish.setId((Integer)4);
+        fifthOtherFish.setId((Integer)5);
+
+        relativeLayout.setOnTouchListener(this);
+        firstOtherFish.setOnTouchListener(this);
+        secondOtherFish.setOnTouchListener(this);
+        thirdOtherFish.setOnTouchListener(this);
+        fourthOtherFish.setOnTouchListener(this);
+        fifthOtherFish.setOnTouchListener(this);
+
 
         //Locate images outside of screen first
         firstOtherFish.setX(-80.0f);
@@ -140,75 +143,172 @@ public class GameActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < 6; i++) {
-                            otherFishChangePosition(i);
-                        }
+                handler.post(() -> {
+                    for (int i = 0; i < 6; i++) {
+                        otherFishChangePosition(i);
+
                     }
                 });
             }
         },0 ,10);
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        boolean canEatFish;
+        switch(v.getId()){
+            case 0:  //Relative Layout
+                //Player Fish Movement by Touch
+                xPlayerFish=event.getRawX() - playerFish.getWidth() / 2;
+                yPlayerFish=event.getRawY()- playerFish.getHeight() / 2;
+                if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                    playerFish.setX(xPlayerFish);
+                    playerFish.setY(yPlayerFish);
+                    playerFishValue.setX(xPlayerFish + 450);
+                    playerFishValue.setY(yPlayerFish + (playerFishValue.getHeight() - playerFishValue.getHeight() / 2));
+                }
+                break;
+            case 1: //First Other Fish
+                canEatFish= checkIfEatableFish(firstOtherFishValue.getText().toString());
+                //canEatFish=false;
+                if(canEatFish){
+                    numOfFishEaten++;
+                    if(numOfFishEaten>4){
+                        finalScore++;
+                    }
+                }
+                else{
+                    CharSequence text = new StringBuffer("Game Finished with Score: "+finalScore);
+                    Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(GameActivity.this,ScoreboardActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            case 2:  //Second Other Fish
+                canEatFish= checkIfEatableFish(secondOtherFishValue.getText().toString());
+                if(canEatFish==true){
+                    numOfFishEaten++;
+                    if(numOfFishEaten>4){
+                        finalScore++;
+                    }
+                }
+                else {
+                    CharSequence text = new StringBuffer("Game Finished with Score: "+finalScore);
+                    Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(GameActivity.this,ScoreboardActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            case 3:
+                canEatFish= checkIfEatableFish(thirdOtherFishValue.getText().toString());
+                if(canEatFish==true){
+                    numOfFishEaten++;
+                    if(numOfFishEaten>4){
+                        finalScore++;
+                    }
+                }
+                else {
+                    CharSequence text = new StringBuffer("Game Finished with Score: "+finalScore);
+                    Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(GameActivity.this,ScoreboardActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            case 4:
+                canEatFish= checkIfEatableFish(fourthOtherFishValue.getText().toString());
+                if(canEatFish==true){
+                    numOfFishEaten++;
+                    if(numOfFishEaten>4){
+                        finalScore++;
+                    }
+                }
+                else {
+                    CharSequence text = new StringBuffer("Game Finished with Score: "+finalScore);
+                    Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(GameActivity.this,ScoreboardActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            case 5:
+                canEatFish= false;
+                //canEatFish= checkIfEatableFish(fifthOtherFishValue.getText().toString());
+                if(canEatFish==true){
+                    numOfFishEaten++;
+                    if(numOfFishEaten>4){
+                        finalScore++;
+                    }
+                }
+                else {
+                    CharSequence text = new StringBuffer("Game Finished with Score: "+finalScore);
+                    Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(GameActivity.this,ScoreboardActivity.class);
+                    startActivity(intent);
+                }
+                break;
+        }
+        return true;
+    }
+    public boolean checkIfEatableFish(String value) {
+    return true;
+}
+
     public void otherFishChangePosition(int otherFishNumber){
         //Right to Left
         switch (otherFishNumber){
             case 1:
-                    xFirstOtherFish -= 9;
-                    if (firstOtherFish.getX() + firstOtherFish.getWidth() < 0) {
-                        xFirstOtherFish = width + 100.0f;
-                        yFirstOtherFish = (float)Math.floor(Math.random() * (height - firstOtherFish.getHeight()));
-                    }
-                    firstOtherFish.setX(xFirstOtherFish);
-                    firstOtherFish.setY(yFirstOtherFish);
-                    firstOtherFishValue.setX(xFirstOtherFish);
-                    firstOtherFishValue.setY(yFirstOtherFish);
+                xFirstOtherFish -= 9;
+                if (firstOtherFish.getX() + firstOtherFish.getWidth() < 0) {
+                    xFirstOtherFish = width + 100.0f;
+                    yFirstOtherFish = (float)Math.floor(Math.random() * (height - firstOtherFish.getHeight()));
+                }
+                firstOtherFish.setX(xFirstOtherFish);
+                firstOtherFish.setY(yFirstOtherFish);
+                firstOtherFishValue.setX(xFirstOtherFish);
+                firstOtherFishValue.setY(yFirstOtherFish);
                 break;
             case 2:
-                    xSecondOtherFish -= 5;
-                    if (secondOtherFish.getX() + secondOtherFish.getWidth() < 0) {
-                        xSecondOtherFish = width + 100.0f;
-                        ySecondOtherFish = (float)Math.floor(Math.random() * (height - secondOtherFish.getHeight()));
-                    }
-                    secondOtherFish.setX(xSecondOtherFish);
-                    secondOtherFish.setY(ySecondOtherFish);
-                    secondOtherFishValue.setX(xSecondOtherFish);
-                    secondOtherFishValue.setY(ySecondOtherFish);
+                xSecondOtherFish -= 5;
+                if (secondOtherFish.getX() + secondOtherFish.getWidth() < 0) {
+                    xSecondOtherFish = width + 100.0f;
+                    ySecondOtherFish = (float)Math.floor(Math.random() * (height - secondOtherFish.getHeight()));
+                }
+                secondOtherFish.setX(xSecondOtherFish);
+                secondOtherFish.setY(ySecondOtherFish);
+                secondOtherFishValue.setX(xSecondOtherFish);
+                secondOtherFishValue.setY(ySecondOtherFish);
                 break;
             case 3:
-                    xThirdOtherFish -= 6;
-                    if (thirdOtherFish.getX() + thirdOtherFish.getWidth() < 0) {
-                        xThirdOtherFish = width + 100.0f;
-                        yThirdOtherFish = (float)Math.floor(Math.random() * (height - thirdOtherFish.getHeight()));
-                    }
-                    thirdOtherFish.setX(xThirdOtherFish);
-                    thirdOtherFish.setY(yThirdOtherFish);
-                    thirdOtherFishValue.setX(xThirdOtherFish);
-                    thirdOtherFishValue.setY(yThirdOtherFish);
+                xThirdOtherFish -= 6;
+                if (thirdOtherFish.getX() + thirdOtherFish.getWidth() < 0) {
+                    xThirdOtherFish = width + 100.0f;
+                    yThirdOtherFish = (float)Math.floor(Math.random() * (height - thirdOtherFish.getHeight()));
+                }
+                thirdOtherFish.setX(xThirdOtherFish);
+                thirdOtherFish.setY(yThirdOtherFish);
+                thirdOtherFishValue.setX(xThirdOtherFish);
+                thirdOtherFishValue.setY(yThirdOtherFish);
                 break;
             case 4:
-                    xFourthOtherFish -= 7;
-                    if (fourthOtherFish.getX() + fourthOtherFish.getWidth() < 0) {
-                        xFourthOtherFish = width + 100.0f;
-                        yFourthOtherFish = (float)Math.floor(Math.random() * (height - fourthOtherFish.getHeight()));
-                    }
-                    fourthOtherFish.setX(xFourthOtherFish);
-                    fourthOtherFish.setY(yFourthOtherFish);
-                    fourthOtherFishValue.setX(xFourthOtherFish);
-                    fourthOtherFishValue.setY(yFourthOtherFish);
+                xFourthOtherFish -= 7;
+                if (fourthOtherFish.getX() + fourthOtherFish.getWidth() < 0) {
+                    xFourthOtherFish = width + 100.0f;
+                    yFourthOtherFish = (float)Math.floor(Math.random() * (height - fourthOtherFish.getHeight()));
+                }
+                fourthOtherFish.setX(xFourthOtherFish);
+                fourthOtherFish.setY(yFourthOtherFish);
+                fourthOtherFishValue.setX(xFourthOtherFish);
+                fourthOtherFishValue.setY(yFourthOtherFish);
                 break;
             case 5:
-                    xFifthOtherFish -= 8;
-                    if (fifthOtherFish.getX() + fifthOtherFish.getWidth() < 0) {
-                        xFifthOtherFish = width + 100.0f;
-                        yFifthOtherFish = (float)Math.floor(Math.random() * (height - fifthOtherFish.getHeight()));
-                    }
-                    fifthOtherFish.setX(xFifthOtherFish);
-                    fifthOtherFish.setY(yFifthOtherFish);
-                    fifthOtherFishValue.setX(xFifthOtherFish);
-                    fifthOtherFishValue.setY(yFifthOtherFish);
+                xFifthOtherFish -= 8;
+                if (fifthOtherFish.getX() + fifthOtherFish.getWidth() < 0) {
+                    xFifthOtherFish = width + 100.0f;
+                    yFifthOtherFish = (float)Math.floor(Math.random() * (height - fifthOtherFish.getHeight()));
+                }
+                fifthOtherFish.setX(xFifthOtherFish);
+                fifthOtherFish.setY(yFifthOtherFish);
+                fifthOtherFishValue.setX(xFifthOtherFish);
+                fifthOtherFishValue.setY(yFifthOtherFish);
                 break;
         }
     }

@@ -7,4 +7,6 @@ public class PlayerFish extends Fish {
     }
 
     //setFishValue(getFishValue()+1);
+    //public boolean checkIfEatableFish(String value) {return false;}
+
 }
