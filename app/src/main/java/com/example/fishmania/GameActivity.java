@@ -24,17 +24,17 @@ import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity implements View.OnTouchListener {
 
-    //PlayerFish playerFishInstance = new PlayerFish();
+    //private Fish playerFishInstance = new PlayerFish();
 
-    public RelativeLayout relativeLayout;
-    public int height, width;
+    private RelativeLayout relativeLayout;
+    private int height, width;
     //Scoreboard records
-    public int numOfFishEaten, finalScore;
-    LocalDateTime dateTime;
+    private int numOfFishEaten, finalScore;
+    private LocalDateTime dateTime;
     //ImageViews
     private ImageView playerFish, firstOtherFish, secondOtherFish, thirdOtherFish, fourthOtherFish, fifthOtherFish;
     //TextView for Fish Values
-    public TextView playerFishValue, firstOtherFishValue, secondOtherFishValue, thirdOtherFishValue, fourthOtherFishValue, fifthOtherFishValue;
+    private TextView playerFishValue, firstOtherFishValue, secondOtherFishValue, thirdOtherFishValue, fourthOtherFishValue, fifthOtherFishValue;
     //Positions of Fish
     private float xPlayerFish, yPlayerFish;
     private float xFirstOtherFish, yFirstOtherFish;
@@ -45,15 +45,17 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
 
     private Handler handler = new Handler();
     private Timer timer = new Timer();
+    private SharedPreferences gameOptionsSP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         relativeLayout = (RelativeLayout) findViewById(R.id.game_activity_id);
         WindowManager wm = getWindowManager();
-        Display disp = wm.getDefaultDisplay();
+        Display display = wm.getDefaultDisplay();
         Point size = new Point();
-        disp.getSize(size);
+        display.getSize(size);
         width = size.x;
         height = size.y;
 
@@ -63,7 +65,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         }
 
         //Shared preferences of game options pull
-        SharedPreferences gameOptionsSP = getApplicationContext().getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
+        gameOptionsSP = getApplicationContext().getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
 
         //Dynamic difficulty game from shared preferences
         String chosenDifficulty = gameOptionsSP.getString("difficulty","");
@@ -101,14 +103,14 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         fourthOtherFishValue = (TextView) findViewById(R.id.fourthOtherFishValue);
         fifthOtherFishValue = (TextView) findViewById(R.id.fifthOtherFishValue);
 
-        relativeLayout.setId(0);
+        playerFish.setId((Integer) 0);
         firstOtherFish.setId((Integer) 1);
-        secondOtherFish.setId((Integer)2);
-        thirdOtherFish.setId((Integer)3);
-        fourthOtherFish.setId((Integer)4);
-        fifthOtherFish.setId((Integer)5);
+        secondOtherFish.setId((Integer) 2);
+        thirdOtherFish.setId((Integer) 3);
+        fourthOtherFish.setId((Integer) 4);
+        fifthOtherFish.setId((Integer) 5);
 
-        relativeLayout.setOnTouchListener(this);
+        playerFish.setOnTouchListener(this);
         firstOtherFish.setOnTouchListener(this);
         secondOtherFish.setOnTouchListener(this);
         thirdOtherFish.setOnTouchListener(this);
@@ -173,7 +175,12 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 //canEatFish=false;
                 if(canEatFish){
                     numOfFishEaten++;
-                    if(numOfFishEaten>4){
+                    firstOtherFish.setX(-80.0f);
+                    firstOtherFish.setY(-80.0f);
+                    firstOtherFishValue.setX(-80.0f);
+                    firstOtherFishValue.setY(-80.0f);
+                    otherFishChangePosition(1);
+                    if(numOfFishEaten%4==0){
                         finalScore++;
                     }
                 }
@@ -188,7 +195,12 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 canEatFish= checkIfEatableFish(secondOtherFishValue.getText().toString());
                 if(canEatFish==true){
                     numOfFishEaten++;
-                    if(numOfFishEaten>4){
+                    secondOtherFish.setX(-80.0f);
+                    secondOtherFish.setY(-80.0f);
+                    secondOtherFishValue.setX(-80.0f);
+                    secondOtherFishValue.setY(-80.0f);
+                    otherFishChangePosition(2);
+                    if(numOfFishEaten%4==0){
                         finalScore++;
                     }
                 }
@@ -203,7 +215,12 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 canEatFish= checkIfEatableFish(thirdOtherFishValue.getText().toString());
                 if(canEatFish==true){
                     numOfFishEaten++;
-                    if(numOfFishEaten>4){
+                    thirdOtherFish.setX(-80.0f);
+                    thirdOtherFish.setY(-80.0f);
+                    thirdOtherFishValue.setX(-80.0f);
+                    thirdOtherFishValue.setY(-80.0f);
+                    otherFishChangePosition(3);
+                    if(numOfFishEaten%4==0){
                         finalScore++;
                     }
                 }
@@ -218,7 +235,12 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 canEatFish= checkIfEatableFish(fourthOtherFishValue.getText().toString());
                 if(canEatFish==true){
                     numOfFishEaten++;
-                    if(numOfFishEaten>4){
+                    fourthOtherFish.setX(-80.0f);
+                    fourthOtherFish.setY(-80.0f);
+                    fourthOtherFishValue.setX(-80.0f);
+                    fourthOtherFishValue.setY(-80.0f);
+                    otherFishChangePosition(4);
+                    if(numOfFishEaten%4==0){
                         finalScore++;
                     }
                 }
@@ -234,7 +256,12 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 //canEatFish= checkIfEatableFish(fifthOtherFishValue.getText().toString());
                 if(canEatFish==true){
                     numOfFishEaten++;
-                    if(numOfFishEaten>4){
+                    fifthOtherFish.setX(-80.0f);
+                    fifthOtherFish.setY(-80.0f);
+                    fifthOtherFishValue.setX(-80.0f);
+                    fifthOtherFishValue.setY(-80.0f);
+                    otherFishChangePosition(5);
+                    if(numOfFishEaten%4==0){
                         finalScore++;
                     }
                 }
@@ -246,6 +273,10 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
                 }
                 break;
         }
+        SharedPreferences.Editor gameScoreEditor = gameOptionsSP.edit();
+        gameScoreEditor.putInt("numberOfFish",numOfFishEaten);
+        gameScoreEditor.putInt("finalScore",finalScore);
+        gameScoreEditor.commit();
         return true;
     }
     public boolean checkIfEatableFish(String value) {
