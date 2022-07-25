@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "21057051689",
+    "project_id": "fishmania-3eb7e",
+    "storage_bucket": "fishmania-3eb7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21057051689:android:00d4a90200808011641038",
+        "android_client_info": {
+          "package_name": "com.example.fishmania"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21057051689-kj5hu3puqsb6qf98b12ohbos9oku7mm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu4NphG1xWe656j5gAn3hCiAMConaiH84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21057051689-kj5hu3puqsb6qf98b12ohbos9oku7mm9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

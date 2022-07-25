@@ -23,10 +23,20 @@
     <string name="age_box">הכנס גיל</string>
     <string name="verify_password_txt">אימות סיסמה:</string>
     <string name="verify_password_box">אימות סיסמה</string>
-    <string name="get_started_btn">התחילו !</string>
     <string name="menu_item_music">נגן/עצור מוזיקה</string>
     <string name="choose_background">בחר רקע למשחק :</string>
     <string name="lets_play_btn">בואו נשחק !</string>
     <string name="choose_fish_color">בחר את צבע הדג :</string>
     <string name="choose_difficulty">בחר רמת קושי :</string>
+    <string name="sign_up_btn">הרשם</string>
+    <string name="nameIsEmpty">יש למלא את השדה שם</string>
+    <string name="ageIsEmpty">יש למלא את השדה גיל</string>
+    <string name="registered">נרשמת בהצלחה !</string>
+    <string name="notRegister">נסה להרשם שוב</string>
+    <string name="connected">מחובר !</string>
+    <string name="checkCredentials">בדוק את פרטי ההתחברות</string>
+    <string name="emailEmpty">יש למלא את השדה אימייל</string>
+    <string name="enterValidEmail">הכנס אימייל תקין</string>
+    <string name="passwordEmpty">יש למלא את השדה סיסמא</string>
+    <string name="passwordLength">אורך הסיסמא צריך להיות לפחות 6 תווים</string>
 </resources>
