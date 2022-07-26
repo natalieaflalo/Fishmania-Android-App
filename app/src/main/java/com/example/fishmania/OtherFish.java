@@ -2,6 +2,7 @@ package com.example.fishmania;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,12 +14,24 @@ public class OtherFish extends Fish{
     private FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
-    private int x, y;
+    private int x, y, fishHeight, fishWidth;
     private Bitmap fish1, fish2, fish3, fish4, fish5;
 
 
     public OtherFish(FishGroup fishGroupValue, GameLevel level, Resources resources){
         super(level, resources);
+        fish1 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
+        fish2 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
+        fish3 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
+        fish4 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
+        fish5 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
+
+        fishWidth = fish1.getWidth();
+        fishHeight = fish1.getHeight();
+        fishWidth/=6;
+        fishHeight/=6;
+        //fishWidth*=(int)screenRatioX;
+
         fishGroup=fishGroupValue;
         updateValue(5);
     }
