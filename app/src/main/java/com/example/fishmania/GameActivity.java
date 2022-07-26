@@ -33,15 +33,10 @@ public class GameActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        SharedPreferences gameOptionsSP = getApplicationContext().getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
-        String chosenBackground = gameOptionsSP.getString("background","");
-        String chosenDifficulty = gameOptionsSP.getString("difficulty","");
-        String chosenFishColor = gameOptionsSP.getString("fishColor","");
-
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
 
-        gameView = new GameView(this, point.x, point.y, chosenBackground, chosenFishColor, chosenDifficulty);
+        gameView = new GameView(this, point.x, point.y);
         setContentView(gameView);
     }
 

@@ -14,9 +14,15 @@ public class GameView extends SurfaceView implements Runnable{
     private int screenX, screenY;
     private float screenRatioX, screenRatioY;
     private Paint paint;
+    private GameActivity activity;
 
-    public GameView(Context context, int screenX, int screenY, String chosenBackground, String fishColor, String level){
-        super(context);
+    public GameView(GameActivity gameActivity, int screenX, int screenY){
+        super(gameActivity);
+        this.activity = gameActivity;
+        SharedPreferences gameOptionsSP = activity.getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
+        String chosenBackground = gameOptionsSP.getString("background","");
+        String chosenDifficulty = gameOptionsSP.getString("difficulty","");
+        String chosenFishColor = gameOptionsSP.getString("fishColor","");
         gameBackground = new Background(screenX, screenY, getResources(), chosenBackground);
         paint = new Paint();
 
