@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class OtherFish extends Fish{
+public class OtherFish{
     private FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
@@ -22,11 +22,12 @@ public class OtherFish extends Fish{
     private Bitmap fish1, fish2, fish3, fish4, fish5;
     public int speed = 20;
     List<Integer> otherFishValueList;
+    private GameLevel difficulty;
 
 
 
     public OtherFish(FishGroup fishGroupValue, GameLevel level, Resources resources){
-        super(level, resources);
+        difficulty = level;
         fish1 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
         fish2 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
         fish3 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
@@ -86,26 +87,27 @@ public class OtherFish extends Fish{
     }
 
     //Text Value Functions
-    public void setTextView(){
-        CharSequence text = "";
-        switch (getGameLevel()){
+    public String setTextView(){
+        String text = "";
+        switch (difficulty){
             case EASY:
-                text = new StringBuffer(getFishValue().get(0));
+                text = text+String.valueOf(getOtherFishValueList().get(0));
                 break;
             case MEDIUM:
-                text= new StringBuffer(getFishValue().get(0)+" + "+getFishValue().get(1));
+                text= text+String.valueOf(getOtherFishValueList().get(0)) + " + " + String.valueOf(getOtherFishValueList().get(1));
                 break;
             case HARD:
-                text= new StringBuffer(getFishValue().get(0)+" * "+getFishValue().get(1));
+                text= text+String.valueOf(getOtherFishValueList().get(0)) + " * " + String.valueOf(getOtherFishValueList().get(1));
+                break;
         }
-        //update text value
+        return text;
     }
 
     public void updateValue ( int playerFishValue){
         List<Integer> valuesToSet = new ArrayList<Integer>();
         Random rand = new Random();
         if (fishGroup==FishGroup.HIGH){
-            switch (getGameLevel()){
+            switch (difficulty){
                 case EASY:
                     valuesToSet.add(rand.nextInt(playerFishValue + 6) + playerFishValue + 1);
                 break;
@@ -122,7 +124,7 @@ public class OtherFish extends Fish{
             }
         }
         else {
-            switch (getGameLevel()){
+            switch (difficulty){
                 case EASY:
                     valuesToSet.add(rand.nextInt(playerFishValue) + playerFishValue-4);
                 break;

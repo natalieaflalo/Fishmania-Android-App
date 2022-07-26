@@ -12,7 +12,7 @@ import android.graphics.Rect;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerFish extends Fish {
+public class PlayerFish {
     public boolean isGoingUp = false;
     public int x, y;
     public Bitmap myFish;
@@ -22,7 +22,6 @@ public class PlayerFish extends Fish {
     private Integer playerFishValue;
 
     public PlayerFish(GameLevel level, int screenY,  Resources resources, String chosenFishColor) {
-        super(level, resources);
         playerFishValue = 5;
         difficulty = level;
 

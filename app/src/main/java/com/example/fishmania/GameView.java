@@ -3,7 +3,10 @@ package com.example.fishmania;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
@@ -25,6 +28,7 @@ public class GameView extends SurfaceView implements Runnable {
     private PlayerFish playerFish;
     private OtherFish[] otherFishArray;
     private Random random;
+    private Bitmap bubble;
     private int finalScore, numOfFishEaten;
     SharedPreferences gameOptionsSP;
 
@@ -44,6 +48,14 @@ public class GameView extends SurfaceView implements Runnable {
 
         playerFish = new PlayerFish(GameLevel.EASY, screenY, getResources(), chosenFishColor);
         otherFishArray = new OtherFish[5];
+        bubble = BitmapFactory.decodeResource(gameActivity.getResources(), R.drawable.value_bubble);
+        int bubbleWidth = bubble.getWidth();
+        int bubbleHeight = bubble.getHeight();
+        bubbleWidth = bubbleWidth/8;
+        bubbleHeight = bubbleHeight/8;
+        bubbleWidth = (int) (bubbleWidth*screenRatioX);
+        bubbleHeight = (int) (bubbleHeight*screenRatioY);
+        bubble= Bitmap.createScaledBitmap(bubble, bubbleWidth, bubbleHeight, false);
 
         for (int i = 0; i < 5; i++) {
             OtherFish otherSingleFish;
@@ -105,10 +117,10 @@ public class GameView extends SurfaceView implements Runnable {
             if (Rect.intersects(otherSingleFish.getCollisionShape(), playerFish.getCollisionShape())) {
                 if (playerFish.checkIfEatableFish(otherSingleFish.getOtherFishValueList())) {
                     numOfFishEaten++;
+                    otherSingleFish.x=screenX;
+                    otherSingleFish.updateValue(playerFish.getPlayerFishValue());
                     if (numOfFishEaten % 3 == 0) {
                         playerFish.setPlayerFishValue();
-                        Canvas canvas = getHolder().lockCanvas();
-                        canvas.drawBitmap(playerFish.myFish, playerFish.x, playerFish.y, paint);
                         for (OtherFish changeValueOtherFish : otherFishArray) {
                             changeValueOtherFish.updateValue(playerFish.getPlayerFishValue());
                         }
@@ -127,10 +139,24 @@ public class GameView extends SurfaceView implements Runnable {
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(gameBackground.background, gameBackground.x, gameBackground.y, paint);
 
-            for (OtherFish otherSingeFish : otherFishArray)
+            for (OtherFish otherSingeFish : otherFishArray) {
                 canvas.drawBitmap(otherSingeFish.getFish(), otherSingeFish.x, otherSingeFish.y, paint);
-
+                canvas.drawBitmap(bubble, otherSingeFish.x-20, otherSingeFish.y-30, paint);
+                paint.setTextSize(50);
+                paint.setTextScaleX(1.f);
+                paint.setAlpha(0);
+                paint.setAntiAlias(true);
+                paint.setColor(Color.BLACK);
+                canvas.drawText(otherSingeFish.setTextView(),otherSingeFish.x+5,otherSingeFish.y+10,paint);
+            }
             canvas.drawBitmap(playerFish.myFish, playerFish.x, playerFish.y, paint);
+            canvas.drawBitmap(bubble, playerFish.x-20, playerFish.y-30, paint);
+            paint.setTextSize(50);
+            paint.setTextScaleX(1.f);
+            paint.setAlpha(0);
+            paint.setAntiAlias(true);
+            paint.setColor(Color.BLACK);
+            canvas.drawText(playerFish.getPlayerFishValue().toString(),playerFish.x+5,playerFish.y+10,paint);
 
             if (isGameOver) {
                 isPlaying = false;
@@ -153,9 +179,7 @@ public class GameView extends SurfaceView implements Runnable {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (event.getX() < screenX / 2) {
-                    playerFish.isGoingUp = true;
-                }
+                playerFish.isGoingUp = true;
                 break;
             case MotionEvent.ACTION_UP:
                 playerFish.isGoingUp = false;
