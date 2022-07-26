@@ -9,16 +9,16 @@ import android.widget.ListView;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ScoreboardActivity extends OptionMenuActivity {
+    List<ScoreRecord> scoreList = new ArrayList<>();
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
-
-        //Define variable for ListView
-        ListView scoreboardList = (ListView) findViewById(R.id.scoreboard_list);
 
         //Example score list
         ScoreRecord first = new ScoreRecord(LocalDateTime.now(),5,5,"EASY");
@@ -27,8 +27,8 @@ public class ScoreboardActivity extends OptionMenuActivity {
         ScoreRecord fourth = new ScoreRecord(LocalDateTime.now(),6,7,"HARD");
         ScoreRecord fifth = new ScoreRecord(LocalDateTime.now(),22,68,"EASY");
         ScoreRecord sixth = new ScoreRecord(LocalDateTime.now(),5,300,"MEDIUM");
+
         //ArrayList of examples
-        ArrayList<ScoreRecord> scoreList = new ArrayList<>();
         scoreList.add(first);
         scoreList.add(second);
         scoreList.add(third);
@@ -36,8 +36,9 @@ public class ScoreboardActivity extends OptionMenuActivity {
         scoreList.add(fifth);
         scoreList.add(sixth);
 
-
-
+        MyAdapter adapter = new MyAdapter(this, R.layout.adapter_view_layout,scoreList);
+        listView = findViewById(R.id.scoreboard_list);
+        listView.setAdapter(adapter);
     }
 
     protected ScoreRecord createNewScoreRecord(){

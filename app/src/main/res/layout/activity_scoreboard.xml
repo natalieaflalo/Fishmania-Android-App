@@ -20,9 +20,10 @@
 
     <ListView
         android:id="@+id/scoreboard_list"
-        android:layout_width="227dp"
-        android:layout_height="433dp"
+        android:layout_width="337dp"
+        android:layout_height="468dp"
         android:background="@drawable/blue_gradient_background"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
