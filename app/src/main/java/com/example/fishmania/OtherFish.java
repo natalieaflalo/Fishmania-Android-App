@@ -7,8 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,7 @@ public class OtherFish{
     private int lowTopBoundMultiply = 2;
     public int x, y, fishHeight, fishWidth, fishCounter = 1;
     private Bitmap fish1, fish2, fish3, fish4, fish5;
-    public int speed = 20;
+    public int speed = 15;
     List<Integer> otherFishValueList;
     private GameLevel difficulty;
 

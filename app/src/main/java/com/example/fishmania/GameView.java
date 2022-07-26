@@ -69,7 +69,6 @@ public class GameView extends SurfaceView implements Runnable {
 
         gameBackground = new Background(screenX, screenY, getResources(), chosenBackground);
         paint = new Paint();
-
         random = new Random();
 
     }
