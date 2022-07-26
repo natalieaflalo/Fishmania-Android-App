@@ -11,11 +11,6 @@ public class MainActivity extends OptionMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn1 = findViewById(R.id.buttonExit);
-        btn1.setOnClickListener(v -> {
-            finish();
-            System.exit(0);
-        });
     }
 
     public void openGameOptionActivity(View view) {
