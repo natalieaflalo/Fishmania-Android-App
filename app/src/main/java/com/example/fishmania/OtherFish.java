@@ -34,7 +34,7 @@ public class OtherFish extends Fish{
 
         fishWidth = fish1.getWidth();
         fishHeight = fish1.getHeight();
-        fishWidth/=6;
+        fishWidth/=1;
         fishHeight/=6;
         fishWidth = (int) (fishWidth * screenRatioX);
         fishHeight = (int) (fishHeight * screenRatioY);

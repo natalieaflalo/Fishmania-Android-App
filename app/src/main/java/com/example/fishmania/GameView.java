@@ -22,8 +22,8 @@ public class GameView extends SurfaceView implements Runnable{
         super(gameActivity);
         this.screenX = screenX;
         this.screenY = screenY;
-        screenRatioX = 1920f/screenX;
-        screenRatioY = 1080/screenY;
+        screenRatioX = 1080f/screenX;
+        screenRatioY = 1920f/screenY;
         this.activity = gameActivity;
         SharedPreferences gameOptionsSP = activity.getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
         String chosenBackground = gameOptionsSP.getString("background","");
