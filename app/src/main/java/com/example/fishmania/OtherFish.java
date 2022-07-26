@@ -1,5 +1,7 @@
 package com.example.fishmania;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,9 +13,12 @@ public class OtherFish extends Fish{
     private FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
+    private int x, y;
+    private Bitmap fish1, fish2, fish3, fish4, fish5;
 
-    public OtherFish(FishGroup fishGroupValue, GameLevel level, ImageView image, TextView textValue){
-        super(level, image, textValue);
+
+    public OtherFish(FishGroup fishGroupValue, GameLevel level, Resources resources){
+        super(level, resources);
         fishGroup=fishGroupValue;
         updateValue(5);
     }
@@ -30,7 +35,7 @@ public class OtherFish extends Fish{
             case HARD:
                 text= new StringBuffer(getFishValue().get(0)+" * "+getFishValue().get(1));
         }
-        setDisplayedValue(text);
+        //update text value
     }
 
     public void updateValue ( int playerFishValue){

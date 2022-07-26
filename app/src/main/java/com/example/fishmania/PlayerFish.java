@@ -1,5 +1,6 @@
 package com.example.fishmania;
 
+import android.content.res.Resources;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -8,8 +9,8 @@ import java.util.List;
 
 public class PlayerFish extends Fish {
 
-    public PlayerFish(GameLevel level, ImageView image, TextView textValue ) {
-        super(level, image ,textValue);
+    public PlayerFish(GameLevel level, Resources resources) {
+        super(level, resources);
         List<Integer> playerFishValue= new ArrayList<Integer>();
         playerFishValue.add(5);
         setFishValue(playerFishValue);
