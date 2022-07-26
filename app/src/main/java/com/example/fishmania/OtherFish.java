@@ -1,8 +1,12 @@
 package com.example.fishmania;
 
+import static com.example.fishmania.GameView.screenRatioX;
+import static com.example.fishmania.GameView.screenRatioY;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +18,10 @@ public class OtherFish extends Fish{
     private FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
-    private int x, y, fishHeight, fishWidth;
+    private int x, y, fishHeight, fishWidth, fishCounter = 1;
     private Bitmap fish1, fish2, fish3, fish4, fish5;
+    public int speed = 20;
+
 
 
     public OtherFish(FishGroup fishGroupValue, GameLevel level, Resources resources){
@@ -30,12 +36,45 @@ public class OtherFish extends Fish{
         fishHeight = fish1.getHeight();
         fishWidth/=6;
         fishHeight/=6;
-        //fishWidth*=(int)screenRatioX;
+        fishWidth = (int) (fishWidth * screenRatioX);
+        fishHeight = (int) (fishHeight * screenRatioY);
+
+        fish1 = Bitmap.createScaledBitmap(fish1, fishWidth, fishHeight, false);
+        fish2 = Bitmap.createScaledBitmap(fish2, fishWidth, fishHeight, false);
+        fish3 = Bitmap.createScaledBitmap(fish3, fishWidth, fishHeight, false);
+        fish4 = Bitmap.createScaledBitmap(fish4, fishWidth, fishHeight, false);
+        fish5 = Bitmap.createScaledBitmap(fish5, fishWidth, fishHeight, false);
+
+        y = -fishHeight;
 
         fishGroup=fishGroupValue;
         updateValue(5);
     }
+    //Animation Functions
+    Bitmap getFish () {
+        switch (fishCounter){
+            case 1:
+                fishCounter++;
+                return fish1;
+            case 2:
+                fishCounter++;
+                return fish2;
+            case 3:
+                fishCounter++;
+                return fish3;
+            case 4:
+                fishCounter++;
+                return fish4;
+        }
+        fishCounter = 1;
+        return fish5;
+    }
 
+    Rect getCollisionShape () {
+        return new Rect(x, y, x + fishWidth, y + fishHeight);
+    }
+
+    //Text Value Functions
     public void setTextView(){
         CharSequence text = "";
         switch (getGameLevel()){
