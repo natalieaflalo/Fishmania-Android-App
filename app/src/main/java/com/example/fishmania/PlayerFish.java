@@ -17,15 +17,14 @@ public class PlayerFish extends Fish {
     public Bitmap myFish;
     public int width, height;
     public GameLevel difficulty;
+    private Integer playerFishValue;
 
     public PlayerFish(GameLevel level, int screenY,  Resources resources, String chosenFishColor) {
         super(level, resources);
-        List<Integer> playerFishValue= new ArrayList<Integer>();
-        playerFishValue.add(5);
-        setFishValue(playerFishValue);
-        difficulty=level;
+        playerFishValue = 5;
+        difficulty = level;
 
-        if(chosenFishColor=="pink"){
+        if(chosenFishColor.matches("pink")){
             myFish = BitmapFactory.decodeResource(resources, R.drawable.pink_eating_fish);
         }
         else{
@@ -51,14 +50,30 @@ public class PlayerFish extends Fish {
     }
 
     public boolean checkIfEatableFish(List <Integer> otherFishValue) {
-        
-        return true;
+        boolean isEatable = false;
+
+        switch (difficulty){
+            case EASY:
+                isEatable = otherFishValue.get(0) <= playerFishValue;
+                break;
+            case MEDIUM:
+                isEatable = otherFishValue.get(0) + otherFishValue.get(1) <= playerFishValue;
+                break;
+            case HARD:
+                isEatable = otherFishValue.get(0) * otherFishValue.get(1) <= playerFishValue;
+                break;
+        }
+        return isEatable;
     }
 
-    public void setFishValue(){
-        List <Integer> playerFishValue = getFishValue();
-        playerFishValue.set(0, playerFishValue.get(0)+1);
-        setFishValue(playerFishValue);
+    public void setPlayerFishValue(){
+        playerFishValue++;
     }
 
+
+//    public void setFishValue(){
+//        List <Integer> playerFishValue = getFishValue();
+//        playerFishValue.set(0, playerFishValue.get(0)+1);
+//        setFishValue(playerFishValue);
+//    }
 }
