@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Random;
 
-public class GameView extends SurfaceView implements Runnable{
+public class GameView extends SurfaceView implements Runnable {
 
     private Thread thread;
     private boolean isPlaying, isGameOver = false;
@@ -25,28 +25,31 @@ public class GameView extends SurfaceView implements Runnable{
     private PlayerFish playerFish;
     private OtherFish[] otherFishArray;
     private Random random;
+    private int finalScore, numOfFishEaten;
+    SharedPreferences gameOptionsSP;
 
-    public GameView(GameActivity gameActivity, int screenX, int screenY){
+    public GameView(GameActivity gameActivity, int screenX, int screenY) {
         super(gameActivity);
         this.screenX = screenX;
         this.screenY = screenY;
-        screenRatioX = 1080f/screenX;
-        screenRatioY = 1920f/screenY;
+        screenRatioX = 1080f / screenX;
+        screenRatioY = 1920f / screenY;
         this.activity = gameActivity;
-        SharedPreferences gameOptionsSP = activity.getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
-        String chosenBackground = gameOptionsSP.getString("background","");
-        String chosenDifficulty = gameOptionsSP.getString("difficulty","");
-        String chosenFishColor = gameOptionsSP.getString("fishColor","");
+        gameOptionsSP = activity.getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
+        String chosenBackground = gameOptionsSP.getString("background", "");
+        String chosenDifficulty = gameOptionsSP.getString("difficulty", "");
+        String chosenFishColor = gameOptionsSP.getString("fishColor", "");
+        finalScore = gameOptionsSP.getInt("finalScore", 0);
+        numOfFishEaten = gameOptionsSP.getInt("numberOfFish", 0);
 
         playerFish = new PlayerFish(GameLevel.EASY, screenY, getResources(), chosenFishColor);
         otherFishArray = new OtherFish[5];
 
-        for (int i = 0;i < 5;i++) {
+        for (int i = 0; i < 5; i++) {
             OtherFish otherSingleFish;
-            if (i%2==0){
+            if (i % 2 == 0) {
                 otherSingleFish = new OtherFish(FishGroup.LOW, defineGameLevel(chosenDifficulty), getResources());
-            }
-            else{
+            } else {
                 otherSingleFish = new OtherFish(FishGroup.HIGH, defineGameLevel(chosenDifficulty), getResources());
             }
             otherFishArray[i] = otherSingleFish;
@@ -61,26 +64,25 @@ public class GameView extends SurfaceView implements Runnable{
 
     @Override
     public void run() {
-        while (isPlaying){
+        while (isPlaying) {
             update();
             draw();
             sleep();
         }
     }
 
-    private void update (){
-        if(playerFish.isGoingUp){
+    private void update() {
+        if (playerFish.isGoingUp) {
             playerFish.y -= 30 * screenRatioY;
-        }
-        else{
+        } else {
             playerFish.y += 30 * screenRatioY;
         }
 
-        if(playerFish.y < 0){
+        if (playerFish.y < 0) {
             playerFish.y = 0;
         }
 
-        if(playerFish.y > screenY - playerFish.height){
+        if (playerFish.y > screenY - playerFish.height) {
             playerFish.y = screenY - playerFish.height;
         }
 
@@ -101,14 +103,26 @@ public class GameView extends SurfaceView implements Runnable{
             }
 
             if (Rect.intersects(otherSingleFish.getCollisionShape(), playerFish.getCollisionShape())) {
-                playerFish.checkIfEatableFish(otherSingleFish.getFishValue());
-                isGameOver = true;
-                return;
+                if (playerFish.checkIfEatableFish(otherSingleFish.getOtherFishValueList())) {
+                    numOfFishEaten++;
+                    if (numOfFishEaten % 3 == 0) {
+                        playerFish.setPlayerFishValue();
+                        Canvas canvas = getHolder().lockCanvas();
+                        canvas.drawBitmap(playerFish.myFish, playerFish.x, playerFish.y, paint);
+                        for (OtherFish changeValueOtherFish : otherFishArray) {
+                            changeValueOtherFish.updateValue(playerFish.getPlayerFishValue());
+                        }
+                        finalScore++;
+                    }
+
+                } else {
+                    isGameOver = true;
+                }
             }
         }
     }
 
-    private void draw (){
+    private void draw() {
         if (getHolder().getSurface().isValid()) {
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(gameBackground.background, gameBackground.x, gameBackground.y, paint);
@@ -121,6 +135,10 @@ public class GameView extends SurfaceView implements Runnable{
             if (isGameOver) {
                 isPlaying = false;
                 getHolder().unlockCanvasAndPost(canvas);
+                SharedPreferences.Editor editor = gameOptionsSP.edit();
+                editor.putInt("numberOfFish", numOfFishEaten);
+                editor.putInt("finalScore", finalScore);
+                editor.commit();
                 activity.startActivity(new Intent(activity, ScoreboardActivity.class));
                 activity.finish();
                 return;
@@ -131,48 +149,11 @@ public class GameView extends SurfaceView implements Runnable{
 
     }
 
-    private void sleep (){
-        try {
-            Thread.sleep(17);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void resume(){
-        isPlaying = true;
-        thread = new Thread( this);
-        thread.start();
-    }
-
-    public void pause(){
-        try{
-            isPlaying = false;
-            thread.join();
-        }catch (InterruptedException e){
-            e.printStackTrace();
-        }
-    }
-
-    @Nullable
-    private GameLevel defineGameLevel(String gameLevelStr){
-        if(gameLevelStr.matches("easy")){
-            return GameLevel.EASY;
-        }
-        else if(gameLevelStr.matches("medium")){
-            return GameLevel.MEDIUM;
-        }
-        else if(gameLevelStr.matches("hard")){
-            return GameLevel.HARD;
-        }
-        return null;
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if(event.getX() < screenX/2){
+                if (event.getX() < screenX / 2) {
                     playerFish.isGoingUp = true;
                 }
                 break;
@@ -181,5 +162,40 @@ public class GameView extends SurfaceView implements Runnable{
                 break;
         }
         return true;
+    }
+
+
+    @Nullable
+    private GameLevel defineGameLevel(String gameLevelStr) {
+        if (gameLevelStr.matches("easy")) {
+            return GameLevel.EASY;
+        } else if (gameLevelStr.matches("medium")) {
+            return GameLevel.MEDIUM;
+        } else if (gameLevelStr.matches("hard")) {
+            return GameLevel.HARD;
+        }
+        return null;
+    }
+    private void sleep() {
+        try {
+            Thread.sleep(17);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void resume() {
+        isPlaying = true;
+        thread = new Thread(this);
+        thread.start();
+    }
+
+    public void pause() {
+        try {
+            isPlaying = false;
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

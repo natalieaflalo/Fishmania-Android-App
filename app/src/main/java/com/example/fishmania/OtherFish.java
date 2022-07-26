@@ -21,6 +21,7 @@ public class OtherFish extends Fish{
     public int x, y, fishHeight, fishWidth, fishCounter = 1;
     private Bitmap fish1, fish2, fish3, fish4, fish5;
     public int speed = 20;
+    List<Integer> otherFishValueList;
 
 
 
@@ -50,6 +51,16 @@ public class OtherFish extends Fish{
         fishGroup=fishGroupValue;
         updateValue(5);
     }
+
+    public List<Integer> getOtherFishValueList() {
+        return otherFishValueList;
+    }
+
+    public void setOtherFishValueList(List<Integer> otherFishValueList) {
+        this.otherFishValueList = otherFishValueList;
+    }
+
+
     //Animation Functions
     public Bitmap getFish () {
         switch (fishCounter){
@@ -126,8 +137,8 @@ public class OtherFish extends Fish{
                     valuesToSet.add(rand.nextInt(lowTopBoundMultiply) + lowBtmBoundMultiply);
                     break;
             }
-            setFishValue(valuesToSet);
         }
+        setOtherFishValueList(valuesToSet);
     }
 
     private void updateLowTopBoundMultiply(int playerFishValue){

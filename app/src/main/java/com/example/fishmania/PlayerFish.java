@@ -6,6 +6,7 @@ import static com.example.fishmania.GameView.screenRatioY;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class PlayerFish extends Fish {
     public Bitmap myFish;
     public int width, height;
     public GameLevel difficulty;
+
     private Integer playerFishValue;
 
     public PlayerFish(GameLevel level, int screenY,  Resources resources, String chosenFishColor) {
@@ -45,6 +47,10 @@ public class PlayerFish extends Fish {
         x = (int)(64 * screenRatioX);
     }
 
+    public Integer getPlayerFishValue() {
+        return playerFishValue;
+    }
+
     Rect getCollisionShape () {
         return new Rect(x, y, x + width, y + height);
     }
@@ -69,11 +75,4 @@ public class PlayerFish extends Fish {
     public void setPlayerFishValue(){
         playerFishValue++;
     }
-
-
-//    public void setFishValue(){
-//        List <Integer> playerFishValue = getFishValue();
-//        playerFishValue.set(0, playerFishValue.get(0)+1);
-//        setFishValue(playerFishValue);
-//    }
 }
