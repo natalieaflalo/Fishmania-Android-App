@@ -6,10 +6,7 @@ import static com.example.fishmania.GameView.screenRatioY;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Rect;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerFish {
