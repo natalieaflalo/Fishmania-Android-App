@@ -18,7 +18,7 @@ public class OtherFish extends Fish{
     private FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
-    private int x, y, fishHeight, fishWidth, fishCounter = 1;
+    public int x, y, fishHeight, fishWidth, fishCounter = 1;
     private Bitmap fish1, fish2, fish3, fish4, fish5;
     public int speed = 20;
 
@@ -34,8 +34,8 @@ public class OtherFish extends Fish{
 
         fishWidth = fish1.getWidth();
         fishHeight = fish1.getHeight();
-        fishWidth/=1;
-        fishHeight/=6;
+        fishWidth/=8;
+        fishHeight/=8;
         fishWidth = (int) (fishWidth * screenRatioX);
         fishHeight = (int) (fishHeight * screenRatioY);
 
@@ -51,7 +51,7 @@ public class OtherFish extends Fish{
         updateValue(5);
     }
     //Animation Functions
-    Bitmap getFish () {
+    public Bitmap getFish () {
         switch (fishCounter){
             case 1:
                 fishCounter++;
@@ -70,7 +70,7 @@ public class OtherFish extends Fish{
         return fish5;
     }
 
-    Rect getCollisionShape () {
+    public Rect getCollisionShape () {
         return new Rect(x, y, x + fishWidth, y + fishHeight);
     }
 
