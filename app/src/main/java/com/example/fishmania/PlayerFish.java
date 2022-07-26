@@ -1,5 +1,8 @@
 package com.example.fishmania;
 
+import static com.example.fishmania.GameView.screenRatioX;
+import static com.example.fishmania.GameView.screenRatioY;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerFish extends Fish {
+    boolean isGoingUp = false;
     int x, y;
     Bitmap myFish;
     int width, height;
@@ -25,13 +29,13 @@ public class PlayerFish extends Fish {
         width = width/4;
         height = height/4;
 
-        width = (int) width*screenRatioX;
-        height = (int) height*screenRatioY;
+        width = (int) (width*screenRatioX);
+        height = (int) (height*screenRatioY);
 
         myFish = Bitmap.createScaledBitmap(myFish, width, height, false);
 
         y = screenY / 2;
-        x = (int) 64 * screenRatioX;
+        x = (int)(64 * screenRatioX);
     }
 
     public void setFishValue(){
