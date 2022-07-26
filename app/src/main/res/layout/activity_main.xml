@@ -24,14 +24,13 @@
         android:id="@+id/buttonNewGame"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/custom_button"
         android:onClick="openGameOptionActivity"
         android:text="@string/new_game_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fishmania_title"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/fishmania_title" />
 
     <Button
         android:id="@+id/buttonHowToPlay"
@@ -39,6 +38,8 @@
         android:layout_height="52dp"
         android:layout_marginTop="104dp"
         android:text="@string/how_to_play_btn"
+        android:background="@drawable/custom_button"
+        android:onClick="openHowToPlayDialog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -51,14 +52,15 @@
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginTop="104dp"
-        android:text="@string/scoreboard_btn"
+        android:background="@drawable/custom_button"
         android:onClick="openScoreboardActivity"
+        android:text="@string/scoreboard_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fishmania_title"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintVertical_bias="0.414" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -68,6 +70,7 @@
         android:layout_marginEnd="85dp"
         android:text="@string/login_btn"
         android:onClick="openLoginActivity"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonExit"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +83,7 @@
         android:layout_height="52dp"
         android:layout_marginEnd="40dp"
         android:text="@string/exit_btn"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

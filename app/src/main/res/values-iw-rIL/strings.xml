@@ -11,7 +11,6 @@
     <string name="password_txt">סיסמה:</string>
     <string name="password_box">הכנס סיסמה</string>
     <string name="dont_have_an_account">אין לך חשבון?</string>
-    <string name="sign_in_btn">הרשמה</string>
     <string name="login_btn">התחברות</string>
     <string name="scoreboard_btn">לוח תוצאות</string>
     <string name="how_to_play_btn">איך משחקים?</string>
@@ -21,8 +20,6 @@
     <string name="email_box">הכנס אימייל</string>
     <string name="age_txt">גיל:</string>
     <string name="age_box">הכנס גיל</string>
-    <string name="verify_password_txt">אימות סיסמה:</string>
-    <string name="verify_password_box">אימות סיסמה</string>
     <string name="menu_item_music">נגן/עצור מוזיקה</string>
     <string name="choose_background">בחר רקע למשחק :</string>
     <string name="lets_play_btn">בואו נשחק !</string>
@@ -39,4 +36,7 @@
     <string name="enterValidEmail">הכנס אימייל תקין</string>
     <string name="passwordEmpty">יש למלא את השדה סיסמא</string>
     <string name="passwordLength">אורך הסיסמא צריך להיות לפחות 6 תווים</string>
+    <string name="gameInstructions">ברוכים הבאים ל-FishManina!\nשחקו במשחק זה כדי לשפר ולגלות את היכולות המתמטיות שלכם בצורה מהנה!\nשחקו ברמה קלה כדי להתחמם ותמשיכו לרמה בינונית עם תרגילי חיבור ולרמה הקשה עם תרגילי כפל\nוהכי חשוב שתהנו בדרך</string>
+    <string name="okButton">אוקיי</string>
+    <string name="welcomeMsg">ברוך הבא</string>
 </resources>

@@ -6,6 +6,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,11 +17,14 @@ public class LoginActivity extends OptionMenuActivity {
     private EditText userPasswordLogin;
     private Button loginBtn;
     private Button signUpBtn;
+    private TextView welcomeMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        setWelcomeMsg();
 
         userEmailLogin = findViewById(R.id.editTextEmailLogin);
         userPasswordLogin = findViewById(R.id.editTextPasswordLogin);
@@ -64,11 +68,19 @@ public class LoginActivity extends OptionMenuActivity {
             });
         });
         signUpBtn.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this,SignUpActivity.class)));
+    }
 
+    private void setWelcomeMsg() {
+        Intent openedFromIntent = getIntent();
+        String acceptedName = openedFromIntent.getStringExtra("NAME");
+        if(acceptedName != null){
+            welcomeMsg = findViewById(R.id.textViewWelcomeLogin);
+            welcomeMsg.append(" " + acceptedName);
+        }
     }
 
     public void signInActivity(View view) {
-        Intent signInIntent = new Intent(this, SignUpActivity.class);
-        startActivity(signInIntent);
+        Intent signUpIntent = new Intent(this, SignUpActivity.class);
+        startActivity(signUpIntent);
     }
 }

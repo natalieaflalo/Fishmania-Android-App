@@ -70,7 +70,10 @@ public class SignUpActivity extends OptionMenuActivity {
             mAuthSignUp.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this,R.string.registered, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                    Intent loginActivity = new Intent(SignUpActivity.this, LoginActivity.class);
+                    loginActivity.putExtra("NAME", name);
+                    startActivity(loginActivity);
+                    //startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                 }
                 else {
                     Toast.makeText(SignUpActivity.this,R.string.notRegister,Toast.LENGTH_SHORT).show();
