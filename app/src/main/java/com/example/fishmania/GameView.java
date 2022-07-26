@@ -1,5 +1,7 @@
 package com.example.fishmania;
 
+import static com.example.fishmania.ScoreboardActivity.scoreList;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +16,7 @@ import android.view.SurfaceView;
 
 import androidx.annotation.Nullable;
 
+import java.time.LocalDateTime;
 import java.util.Random;
 
 public class GameView extends SurfaceView implements Runnable {
@@ -30,7 +33,7 @@ public class GameView extends SurfaceView implements Runnable {
     private Random random;
     private Bitmap bubble;
     private int finalScore, numOfFishEaten;
-    SharedPreferences gameOptionsSP;
+    private SharedPreferences gameOptionsSP;
 
     public GameView(GameActivity gameActivity, int screenX, int screenY) {
         super(gameActivity);
@@ -70,7 +73,6 @@ public class GameView extends SurfaceView implements Runnable {
         gameBackground = new Background(screenX, screenY, getResources(), chosenBackground);
         paint = new Paint();
         random = new Random();
-
     }
 
     @Override
@@ -114,7 +116,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
 
             if (Rect.intersects(otherSingleFish.getCollisionShape(), playerFish.getCollisionShape())) {
-                if (playerFish.checkIfEatableFish(otherSingleFish.getOtherFishValueList())) {
+                if (otherSingleFish.fishGroup==FishGroup.LOW) {
                     numOfFishEaten++;
                     otherSingleFish.x=screenX;
                     otherSingleFish.updateValue(playerFish.getPlayerFishValue());
@@ -164,6 +166,7 @@ public class GameView extends SurfaceView implements Runnable {
                 editor.putInt("numberOfFish", numOfFishEaten);
                 editor.putInt("finalScore", finalScore);
                 editor.commit();
+                createNewScoreRecord();
                 activity.startActivity(new Intent(activity, ScoreboardActivity.class));
                 activity.finish();
                 return;
@@ -171,7 +174,20 @@ public class GameView extends SurfaceView implements Runnable {
 
             getHolder().unlockCanvasAndPost(canvas);
         }
+    }
 
+    private void createNewScoreRecord(){
+        SharedPreferences finalRecordSP = activity.getSharedPreferences("GameOptionsPrefs", Context.MODE_PRIVATE);
+        String difficultyRecord = finalRecordSP.getString("difficulty","");
+        int numOfFishRecord = finalRecordSP.getInt("numberOfFish", 0);
+        int finalScoreRecord = finalRecordSP.getInt("finalScore", 0);
+        ScoreRecord newRecord = new ScoreRecord(LocalDateTime.now(),numOfFishRecord,finalScoreRecord,difficultyRecord);
+
+        scoreList.add(newRecord);
+        SharedPreferences.Editor editor = gameOptionsSP.edit();
+        editor.putInt("numberOfFish", 0);
+        editor.putInt("finalScore", 0);
+        editor.commit();
     }
 
     @Override

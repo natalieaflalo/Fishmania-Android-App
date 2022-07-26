@@ -51,23 +51,6 @@ public class PlayerFish {
         return new Rect(x, y, x + width, y + height);
     }
 
-    public boolean checkIfEatableFish(List <Integer> otherFishValue) {
-        boolean isEatable = false;
-
-        switch (difficulty){
-            case EASY:
-                isEatable = otherFishValue.get(0) <= playerFishValue;
-                break;
-            case MEDIUM:
-                isEatable = otherFishValue.get(0) + otherFishValue.get(1) <= playerFishValue;
-                break;
-            case HARD:
-                isEatable = otherFishValue.get(0) * otherFishValue.get(1) <= playerFishValue;
-                break;
-        }
-        return isEatable;
-    }
-
     public void setPlayerFishValue(){
         playerFishValue++;
     }

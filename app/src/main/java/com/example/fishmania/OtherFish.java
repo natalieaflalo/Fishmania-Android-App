@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 public class OtherFish{
-    private FishGroup fishGroup;
+    public FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
     public int x, y, fishHeight, fishWidth, fishCounter = 1;
