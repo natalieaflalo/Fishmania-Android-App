@@ -2,51 +2,51 @@ package com.example.fishmania;
 
 import static com.example.fishmania.GameView.screenRatioX;
 import static com.example.fishmania.GameView.screenRatioY;
-
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class OtherFish{
+    //Other Fish Information
+    private Bitmap fish1, fish2, fish3, fish4, fish5;
+    public int x, y, fishHeight, fishWidth;
+    public int speed = 15;
     public FishGroup fishGroup;
+    private GameLevel difficulty;
+    //List of All Other Fish
+    public List<Integer> otherFishValueList;
+    //Bounds for Random Factor in Hard Difficulty
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
-    public int x, y, fishHeight, fishWidth;
-    private Bitmap fish1, fish2, fish3, fish4, fish5;
-    public int speed = 15;
-    List<Integer> otherFishValueList;
-    private GameLevel difficulty;
-
-
 
     public OtherFish(FishGroup fishGroupValue, GameLevel level, Resources resources){
-        difficulty = level;
+        //Initiate Other Fish
         fish1 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
         fish2 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
         fish3 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
         fish4 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
         fish5 = BitmapFactory.decodeResource(resources, R.drawable.other_blue_fish);
 
+
+        //Scale Fish Size and Location
         fishWidth = fish1.getWidth();
         fishHeight = fish1.getHeight();
         fishWidth/=8;
         fishHeight/=8;
         fishWidth = (int) (fishWidth * screenRatioX);
         fishHeight = (int) (fishHeight * screenRatioY);
-
         fish1 = Bitmap.createScaledBitmap(fish1, fishWidth, fishHeight, false);
         fish2 = Bitmap.createScaledBitmap(fish2, fishWidth, fishHeight, false);
         fish3 = Bitmap.createScaledBitmap(fish3, fishWidth, fishHeight, false);
         fish4 = Bitmap.createScaledBitmap(fish4, fishWidth, fishHeight, false);
         fish5 = Bitmap.createScaledBitmap(fish5, fishWidth, fishHeight, false);
-
         y = -fishHeight;
-
+        //Initiate Fish Information
+        difficulty = level;
         fishGroup=fishGroupValue;
         updateValue(5);
     }
@@ -58,7 +58,6 @@ public class OtherFish{
     public void setOtherFishValueList(List<Integer> otherFishValueList) {
         this.otherFishValueList = otherFishValueList;
     }
-
 
     //Animation Functions
     public Bitmap getFish () {
@@ -95,6 +94,7 @@ public class OtherFish{
     public void updateValue ( int playerFishValue){
         List<Integer> valuesToSet = new ArrayList<Integer>();
         Random rand = new Random();
+        //Update Fish Value by Game Difficulty and if They can be Eaten
         if (fishGroup==FishGroup.HIGH){
             switch (difficulty){
                 case EASY:

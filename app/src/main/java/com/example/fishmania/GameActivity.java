@@ -12,12 +12,10 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         Point point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
-
+        //Create GameView Instance on Activity
         gameView = new GameView(this, point.x, point.y);
         setContentView(gameView);
     }
