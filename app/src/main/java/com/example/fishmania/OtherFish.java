@@ -16,7 +16,7 @@ public class OtherFish{
     public FishGroup fishGroup;
     private int  lowBtmBoundMultiply = 1;
     private int lowTopBoundMultiply = 2;
-    public int x, y, fishHeight, fishWidth, fishCounter = 1;
+    public int x, y, fishHeight, fishWidth;
     private Bitmap fish1, fish2, fish3, fish4, fish5;
     public int speed = 15;
     List<Integer> otherFishValueList;
@@ -62,22 +62,13 @@ public class OtherFish{
 
     //Animation Functions
     public Bitmap getFish () {
-        switch (fishCounter){
-            case 1:
-                fishCounter++;
+        switch (fishGroup) {
+            case LOW:
                 return fish1;
-            case 2:
-                fishCounter++;
+            case HIGH:
                 return fish2;
-            case 3:
-                fishCounter++;
-                return fish3;
-            case 4:
-                fishCounter++;
-                return fish4;
         }
-        fishCounter = 1;
-        return fish5;
+        return null;
     }
 
     public Rect getCollisionShape () {
@@ -125,12 +116,12 @@ public class OtherFish{
             switch (difficulty){
                 case EASY:
                     valuesToSet.add(rand.nextInt(playerFishValue) + playerFishValue-4);
-                break;
+                    break;
                 case MEDIUM:
-                    int randomSum= rand.nextInt(playerFishValue) + playerFishValue-4;
-                    valuesToSet.add(rand.nextInt(randomSum - 1) + 1);
+                    int randomSum= rand.nextInt(playerFishValue-1) + playerFishValue-4;
+                    valuesToSet.add(rand.nextInt(randomSum)+1);
                     valuesToSet.add(randomSum - valuesToSet.get(0));
-                break;
+                    break;
                 case HARD:
                     updateLowTopBoundMultiply(playerFishValue);
                     valuesToSet.add(rand.nextInt(lowTopBoundMultiply) + lowBtmBoundMultiply);

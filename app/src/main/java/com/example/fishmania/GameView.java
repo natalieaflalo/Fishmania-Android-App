@@ -119,7 +119,7 @@ public class GameView extends SurfaceView implements Runnable {
                 if (otherSingleFish.fishGroup==FishGroup.LOW) {
                     numOfFishEaten++;
                     otherSingleFish.x=screenX;
-                    otherSingleFish.updateValue(playerFish.getPlayerFishValue());
+//                    otherSingleFish.updateValue(playerFish.getPlayerFishValue());
                     if (numOfFishEaten % 3 == 0) {
                         playerFish.setPlayerFishValue();
                         for (OtherFish changeValueOtherFish : otherFishArray) {
