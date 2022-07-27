@@ -17,7 +17,7 @@ public class ScoreboardActivity extends OptionMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
 
-        MyAdapter adapter = new MyAdapter(this, R.layout.adapter_view_layout,scoreList);
+        MyAdapter adapter = new MyAdapter(this, R.layout.adapter_view_layout, scoreList);
         listView = findViewById(R.id.scoreboard_list);
         listView.setAdapter(adapter);
     }

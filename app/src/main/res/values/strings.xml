@@ -39,5 +39,8 @@
     <string name="okButton">OK</string>
     <string name="gameInstructions">Welcome to FishMaia!\nPlay this game in order to improve and discover your mathematical skills with joy!\nplay the easy level to warm up and move on to medium level for sum and hard level for multiplication\nMost importantly Have Fun</string>
     <string name="welcomeMsg">Welcome</string>
+    <string name="numberOfEatenFish">Number of eaten fish: </string>
+    <string name="score">Score: </string>
+    <string name="gameLevel">Game Level: </string>
 
 </resources>

@@ -1,8 +1,10 @@
 package com.example.fishmania;
 
+import static androidx.core.content.res.TypedArrayUtils.getText;
 import static java.lang.String.valueOf;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +18,14 @@ public class MyAdapter extends ArrayAdapter<ScoreRecord> {
     private LayoutInflater inflater;
     private List<ScoreRecord> scoreList;
     private int viewResourceId ;
+    private Context myContext;
 
     public MyAdapter(Context context, int textViewId, List<ScoreRecord> scoreRecords){
         super(context, textViewId, scoreRecords);
         scoreList = scoreRecords;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         viewResourceId = textViewId;
+        myContext = context;
     }
 
     public View getView(int position, View convertView, ViewGroup parents){
@@ -35,9 +39,16 @@ public class MyAdapter extends ArrayAdapter<ScoreRecord> {
             TextView gameLevel = convertView.findViewById(R.id.adapter_game_level);
 
             date.setText(valueOf(scoreRecord.getDate()));
-            numberOfFish.setText("Number of eaten fish: " + valueOf(scoreRecord.getNum_of_fish()));
-            finalValue.setText("Score: " + valueOf(scoreRecord.getFinal_score()));
-            gameLevel.setText("Game Level: " + valueOf(scoreRecord.getGame_level()));
+
+            CharSequence charNumberOfFish = new StringBuffer(" " + scoreRecord.getNum_of_fish());
+            numberOfFish.append(charNumberOfFish);
+
+            CharSequence charFinalValue = new StringBuffer(" " + scoreRecord.getFinal_score());
+            finalValue.append(charFinalValue);
+
+            CharSequence charGameLevel = new StringBuffer(" " + scoreRecord.getGame_level());
+            gameLevel.append(charGameLevel);
+
         }
 
         return convertView;

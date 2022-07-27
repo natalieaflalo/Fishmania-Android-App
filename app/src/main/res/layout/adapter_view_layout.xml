@@ -23,14 +23,14 @@
 
         <TextView
             android:gravity="center"
-            android:text="Number of Fish"
+            android:text="@string/numberOfEatenFish"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:id="@+id/adapter_num_of_fish"/>
+            android:id="@+id/adapter_num_of_fish" />
 
         <TextView
             android:gravity="center"
-            android:text="Final Score"
+            android:text="@string/score"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:id="@+id/adapter_final_value"
@@ -38,7 +38,7 @@
 
         <TextView
             android:gravity="center"
-            android:text="Game Level"
+            android:text="@string/gameLevel"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:id="@+id/adapter_game_level"
