@@ -143,6 +143,8 @@ public class GameView extends SurfaceView implements Runnable {
                     soundPool.play(eatSound, 1, 1, 0, 0, 1);
                     numOfFishEaten++;
                     otherSingleFish.x=screenX;
+                    otherSingleFish.y = random.nextInt(screenY - otherSingleFish.fishHeight);
+                    otherSingleFish.updateValue(playerFish.getPlayerFishValue());
                     //Raise Score and User Fish Value after 3 Eating Instances
                     if (numOfFishEaten % 3 == 0) {
                         playerFish.setPlayerFishValue();

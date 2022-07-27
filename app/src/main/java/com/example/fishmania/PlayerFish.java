@@ -15,7 +15,6 @@ public class PlayerFish {
     public Bitmap myFish;
     public int width, height;
     public GameLevel difficulty;
-
     private Integer playerFishValue;
 
     public PlayerFish(GameLevel level, int screenY,  Resources resources, String chosenFishColor) {
