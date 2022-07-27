@@ -104,7 +104,7 @@ public class GameView extends SurfaceView implements Runnable {
             otherSingleFish.x -= otherSingleFish.speed;
 
             if (otherSingleFish.x + otherSingleFish.fishWidth < 0) {
-                int bound = (int) (30 * screenRatioX);
+                int bound = (int) (25 * screenRatioX);
                 otherSingleFish.speed = random.nextInt(bound);
 
                 if (otherSingleFish.speed < 10 * screenRatioX) {
@@ -117,6 +117,7 @@ public class GameView extends SurfaceView implements Runnable {
 
             if (Rect.intersects(otherSingleFish.getCollisionShape(), playerFish.getCollisionShape())) {
                 if (otherSingleFish.fishGroup==FishGroup.LOW) {
+
                     numOfFishEaten++;
                     otherSingleFish.x=screenX;
 //                    otherSingleFish.updateValue(playerFish.getPlayerFishValue());
