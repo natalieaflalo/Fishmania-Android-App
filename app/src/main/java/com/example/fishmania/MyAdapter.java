@@ -1,10 +1,8 @@
 package com.example.fishmania;
 
-import static androidx.core.content.res.TypedArrayUtils.getText;
 import static java.lang.String.valueOf;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-import java.util.List;
 
 public class PlayerFish {
     public boolean isGoingUp = false;

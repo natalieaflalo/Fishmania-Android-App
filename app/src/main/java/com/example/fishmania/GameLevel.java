@@ -8,9 +8,4 @@ public enum GameLevel {
     private GameLevel(int value){
         this.numericValue = value;
     }
-
-    public int getNumberOfElements(GameLevel gameLevel)
-    {
-        return gameLevel.numericValue;
-    }
 }
