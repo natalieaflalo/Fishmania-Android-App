@@ -49,7 +49,7 @@
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="@string/email_box"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:paddingStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
