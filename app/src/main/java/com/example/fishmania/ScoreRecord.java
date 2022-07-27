@@ -28,4 +28,6 @@ public class ScoreRecord {
     }
 
     public String getGame_level() {return game_level;}
+
+
 }

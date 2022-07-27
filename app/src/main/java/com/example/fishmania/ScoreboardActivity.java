@@ -1,6 +1,8 @@
 package com.example.fishmania;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,5 +20,9 @@ public class ScoreboardActivity extends OptionMenuActivity {
         MyAdapter adapter = new MyAdapter(this, R.layout.adapter_view_layout,scoreList);
         listView = findViewById(R.id.scoreboard_list);
         listView.setAdapter(adapter);
+    }
+
+    public void openMenuActivity(View view) {
+        startActivity( new Intent(this, MainActivity.class));
     }
 }

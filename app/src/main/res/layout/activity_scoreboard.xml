@@ -20,14 +20,30 @@
 
     <ListView
         android:id="@+id/scoreboard_list"
-        android:layout_width="337dp"
-        android:layout_height="468dp"
+        android:layout_width="336dp"
+        android:layout_height="425dp"
         android:background="@drawable/blue_gradient_background"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.805" />
+        app:layout_constraintVertical_bias="0.55" />
+
+    <Button
+        android:id="@+id/buttonBackToMain"
+        android:layout_width="123dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/custom_button"
+        android:onClick="openMenuActivity"
+        android:text="@string/backToMain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

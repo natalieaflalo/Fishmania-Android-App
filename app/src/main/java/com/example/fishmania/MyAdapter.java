@@ -34,10 +34,10 @@ public class MyAdapter extends ArrayAdapter<ScoreRecord> {
             TextView finalValue = convertView.findViewById(R.id.adapter_final_value);
             TextView gameLevel = convertView.findViewById(R.id.adapter_game_level);
 
-            date.setText(scoreRecord.getDate().toString());
-            numberOfFish.setText(valueOf(scoreRecord.getNum_of_fish()));
-            finalValue.setText(valueOf(scoreRecord.getFinal_score()));
-            gameLevel.setText(valueOf(scoreRecord.getGame_level()));
+            date.setText(valueOf(scoreRecord.getDate()));
+            numberOfFish.setText("Number of eaten fish: " + valueOf(scoreRecord.getNum_of_fish()));
+            finalValue.setText("Score: " + valueOf(scoreRecord.getFinal_score()));
+            gameLevel.setText("Game Level: " + valueOf(scoreRecord.getGame_level()));
         }
 
         return convertView;

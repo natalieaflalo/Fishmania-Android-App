@@ -183,7 +183,7 @@ public class GameView extends SurfaceView implements Runnable {
         int numOfFishRecord = finalRecordSP.getInt("numberOfFish", 0);
         int finalScoreRecord = finalRecordSP.getInt("finalScore", 0);
         ScoreRecord newRecord = new ScoreRecord(LocalDateTime.now(),numOfFishRecord,finalScoreRecord,difficultyRecord);
-
+        
         scoreList.add(newRecord);
         SharedPreferences.Editor editor = gameOptionsSP.edit();
         editor.putInt("numberOfFish", 0);

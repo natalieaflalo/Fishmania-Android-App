@@ -39,4 +39,5 @@
     <string name="gameInstructions">ברוכים הבאים ל-FishManina!\nשחקו במשחק זה כדי לשפר ולגלות את היכולות המתמטיות שלכם בצורה מהנה!\nשחקו ברמה קלה כדי להתחמם ותמשיכו לרמה בינונית עם תרגילי חיבור ולרמה הקשה עם תרגילי כפל\nוהכי חשוב שתהנו בדרך</string>
     <string name="okButton">אוקיי</string>
     <string name="welcomeMsg">ברוך הבא</string>
+    <string name="backToMain">תפריט</string>
 </resources>
