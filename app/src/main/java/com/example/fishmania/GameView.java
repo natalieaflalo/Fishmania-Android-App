@@ -11,6 +11,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
@@ -34,6 +38,8 @@ public class GameView extends SurfaceView implements Runnable {
     private Bitmap bubble;
     private int finalScore, numOfFishEaten;
     private SharedPreferences gameOptionsSP;
+    private SoundPool soundPool;
+    private int eatSound;
 
     public GameView(GameActivity gameActivity, int screenX, int screenY) {
         super(gameActivity);
@@ -73,6 +79,23 @@ public class GameView extends SurfaceView implements Runnable {
         gameBackground = new Background(screenX, screenY, getResources(), chosenBackground);
         paint = new Paint();
         random = new Random();
+
+        //sound Initiate
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+
+        } else
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+
+        eatSound = soundPool.load(activity, R.raw.fish_eating_sound, 1);
     }
 
     @Override
@@ -117,7 +140,7 @@ public class GameView extends SurfaceView implements Runnable {
 
             if (Rect.intersects(otherSingleFish.getCollisionShape(), playerFish.getCollisionShape())) {
                 if (otherSingleFish.fishGroup==FishGroup.LOW) {
-
+                    soundPool.play(eatSound, 1, 1, 0, 0, 1);
                     numOfFishEaten++;
                     otherSingleFish.x=screenX;
 //                    otherSingleFish.updateValue(playerFish.getPlayerFishValue());

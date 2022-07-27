@@ -23,6 +23,6 @@ public class ScoreboardActivity extends OptionMenuActivity {
     }
 
     public void openMenuActivity(View view) {
-        startActivity( new Intent(this, MainActivity.class));
+        startActivity( new Intent(this, GameOptionsActivity.class));
     }
 }
