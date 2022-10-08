@@ -9,10 +9,11 @@ The game has three difficulty levels:
 3. Hard - comparing a simple number to the product of two simple numbers.
 
 ## How to play:
-Enter the "New Game" screen and choose the difficulty, fish color and screen background and press "Let's Play!".
-Move your fish and eat any other fish that has a vlaue smaller or equal to yours.
-In order to move your fish up- press and hold your finger on the screen.
-In order to move your fish down- remove your finger from touching the screen.
+1. Enter the "New Game" screen and choose the difficulty, fish color and screen background and press "Let's Play!".
+2. Move your fish and eat any other fish that has a vlaue smaller or equal to yours:
+ - In order to move your fish up- press and hold your finger on the screen.
+ - In order to move your fish down- remove your finger from touching the screen.
+3. At the end of the game you can watch your scoreboard and start a new game.
 
 ## Notes:
 - The game is available in English and Hebrew
