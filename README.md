@@ -1,7 +1,7 @@
 # Fishmania-Android-App
 
 ## Main Purpose:
-- This android game practices basic math exercises.
+This android game practices basic math exercises.
 
 The game has three difficulty levels:
 1. Easy - comparing simple numbers.
